@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impulso Digital - Soluciones Digitales para tu Negocio</title>
+    <link rel="stylesheet" href="estilos/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header class="header" id="header">
+        <div class="container header__container">
+            <a href="#" class="logo">
+                <svg class="logo__icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="19" stroke="#1D4ED8" stroke-width="2"/>
+                    <path d="M12 28L18 20L22 24L28 14" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="28" r="2.5" fill="#1D4ED8"/>
+                    <circle cx="18" cy="20" r="2.5" fill="#38BDF8"/>
+                    <circle cx="22" cy="24" r="2.5" fill="#1D4ED8"/>
+                    <circle cx="28" cy="14" r="2.5" fill="#38BDF8"/>
+                    <path d="M28 14L32 10" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+                <span class="logo__text">
+                    <span class="logo__impulso">Impulso</span>
+                    <span class="logo__digital">Digital</span>
+                </span>
+            </a>
+
+            <nav class="nav" id="nav">
+                <ul class="nav__list">
+                    <li><a href="#hero" class="nav__link">Inicio</a></li>
+                    <li><a href="#servicios" class="nav__link">Servicios</a></li>
+                    <li><a href="#nosotros" class="nav__link">Nosotros</a></li>
+                    <li><a href="#proyectos" class="nav__link">Proyectos</a></li>
+                    <li><a href="#contacto" class="nav__link">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <a href="#contacto" class="btn btn--primary header__cta">Solicitar presupuesto</a>
+
+            <button class="hamburger" id="hamburger" aria-label="Menú">
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+        <div class="hero__bg">
+            <div class="hero__shape hero__shape--1"></div>
+            <div class="hero__shape hero__shape--2"></div>
+            <div class="hero__shape hero__shape--3"></div>
+        </div>
+        <div class="container hero__container">
+            <div class="hero__content">
+                <h1 class="hero__title">Impulsamos tu negocio con <span class="highlight">soluciones digitales</span></h1>
+                <p class="hero__subtitle">Creamos páginas web, sistemas de gestión y herramientas digitales pensadas para simplificar procesos y hacer crecer tu empresa.</p>
+                <div class="hero__actions">
+                    <a href="#servicios" class="btn btn--primary btn--lg">Ver servicios</a>
+                    <a href="#contacto" class="btn btn--outline btn--lg">Contáctanos</a>
+                </div>
+            </div>
+
+            <div class="hero__visual">
+                <div class="hero__card hero__card--1">
+                    <div class="hero__card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <strong>+15 proyectos</strong>
+                        <span>entregados</span>
+                    </div>
+                </div>
+                <div class="hero__card hero__card--2">
+                    <div class="hero__card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <strong>+5 años</strong>
+                        <span>de experiencia</span>
+                    </div>
+                </div>
+                <div class="hero__card hero__card--3">
+                    <div class="hero__card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <strong>100%</strong>
+                        <span>satisfacción</span>
+                    </div>
+                </div>
+
+                <div class="hero__nodes">
+                    <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="150" cy="80" r="6" fill="#1D4ED8" opacity="0.8"/>
+                        <circle cx="80" cy="200" r="5" fill="#38BDF8" opacity="0.6"/>
+                        <circle cx="220" cy="200" r="5" fill="#38BDF8" opacity="0.6"/>
+                        <circle cx="150" cy="150" r="4" fill="#1D4ED8" opacity="0.4"/>
+                        <path d="M150 80L80 200" stroke="#1D4ED8" stroke-width="1.5" opacity="0.3"/>
+                        <path d="M150 80L220 200" stroke="#38BDF8" stroke-width="1.5" opacity="0.3"/>
+                        <path d="M80 200L150 150" stroke="#38BDF8" stroke-width="1.5" opacity="0.2"/>
+                        <path d="M220 200L150 150" stroke="#1D4ED8" stroke-width="1.5" opacity="0.2"/>
+                        <path d="M150 150L150 80" stroke="#38BDF8" stroke-width="2" opacity="0.5"/>
+                        <path d="M150 150L150 80" stroke="#1D4ED8" stroke-width="1" stroke-dasharray="4 4" opacity="0.6"/>
+                        <path d="M220 200L270 230" stroke="#38BDF8" stroke-width="1.5" opacity="0.3"/>
+                        <path d="M80 200L30 230" stroke="#1D4ED8" stroke-width="1.5" opacity="0.3"/>
+                        <circle cx="270" cy="230" r="3" fill="#38BDF8" opacity="0.4"/>
+                        <circle cx="30" cy="230" r="3" fill="#1D4ED8" opacity="0.4"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SERVICIOS ========== -->
+    <section class="section servicios" id="servicios">
+        <div class="container">
+            <div class="section__header fade-in">
+                <span class="section__tag">Servicios</span>
+                <h2 class="section__title">Soluciones digitales <span class="highlight">para cada necesidad</span></h2>
+                <p class="section__desc">Transformamos tus ideas en herramientas digitales funcionales, modernas y diseñadas para impulsar tu negocio.</p>
+            </div>
+
+            <div class="servicios__grid">
+                <div class="servicio__card fade-in">
+                    <div class="servicio__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>
+                        </svg>
+                    </div>
+                    <h3 class="servicio__title">Desarrollo de páginas web</h3>
+                    <p class="servicio__desc">Sitios web profesionales, modernos y optimizados para captar clientes y mostrar tu negocio al mundo.</p>
+                </div>
+
+                <div class="servicio__card fade-in">
+                    <div class="servicio__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <h3 class="servicio__title">Sistemas de gestión</h3>
+                    <p class="servicio__desc">Software a medida para administrar clientes, stock, facturación y procesos internos de tu empresa.</p>
+                </div>
+
+                <div class="servicio__card fade-in">
+                    <div class="servicio__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+                        </svg>
+                    </div>
+                    <h3 class="servicio__title">Tiendas online</h3>
+                    <p class="servicio__desc">E-commerce listos para vender, con carrito de compras, pasarela de pago y panel de administración.</p>
+                </div>
+
+                <div class="servicio__card fade-in">
+                    <div class="servicio__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                    </div>
+                    <h3 class="servicio__title">Automatización de procesos</h3>
+                    <p class="servicio__desc">Optimizamos tareas repetitivas con herramientas digitales que ahorran tiempo y reducen errores.</p>
+                </div>
+
+                <div class="servicio__card fade-in">
+                    <div class="servicio__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <ellipse cx="12" cy="12" rx="3" ry="11"/><ellipse cx="12" cy="12" rx="11" ry="3"/><circle cx="12" cy="12" r="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="servicio__title">Diseño de interfaces</h3>
+                    <p class="servicio__desc">Creamos experiencias de usuario intuitivas y atractivas que hacen que tus clientes vuelvan.</p>
+                </div>
+
+                <div class="servicio__card fade-in">
+                    <div class="servicio__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="servicio__title">Soporte y mantenimiento</h3>
+                    <p class="servicio__desc">Acompañamiento continuo para mantener tu sitio o sistema actualizado, seguro y funcionando sin problemas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== NOSOTROS ========== -->
+    <section class="section nosotros" id="nosotros">
+        <div class="container">
+            <div class="nosotros__grid">
+                <div class="nosotros__content fade-in">
+                    <span class="section__tag">Nosotros</span>
+                    <h2 class="section__title">Tu socio tecnológico <span class="highlight">de confianza</span></h2>
+                    <p class="nosotros__text">
+                        En <strong>Impulso Digital</strong> desarrollamos soluciones digitales a medida para negocios que quieren crecer, organizarse y vender mejor. Nuestro objetivo es crear herramientas simples, modernas y funcionales, adaptadas a cada cliente.
+                    </p>
+                    <div class="nosotros__features">
+                        <div class="nosotros__feature">
+                            <div class="nosotros__feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <div>
+                                <h4>Soluciones a medida</h4>
+                                <p>Cada proyecto es único. Analizamos tus necesidades y creamos la solución ideal.</p>
+                            </div>
+                        </div>
+                        <div class="nosotros__feature">
+                            <div class="nosotros__feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <div>
+                                <h4>Diseño profesional</h4>
+                                <p>Combinamos funcionalidad con estética para entregar productos que impactan.</p>
+                            </div>
+                        </div>
+                        <div class="nosotros__feature">
+                            <div class="nosotros__feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <div>
+                                <h4>Acompañamiento personalizado</h4>
+                                <p>Estamos con vos en cada etapa del proyecto, incluso después de la entrega.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nosotros__stats fade-in">
+                    <div class="nosotros__stat">
+                        <span class="nosotros__stat-number" data-count="50">0</span>
+                        <span class="nosotros__stat-label">Proyectos realizados</span>
+                    </div>
+                    <div class="nosotros__stat">
+                        <span class="nosotros__stat-number" data-count="5">0</span>
+                        <span class="nosotros__stat-label">Años de experiencia</span>
+                    </div>
+                    <div class="nosotros__stat">
+                        <span class="nosotros__stat-number" data-count="30">0</span>
+                        <span class="nosotros__stat-label">Clientes satisfechos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PROYECTOS ========== -->
+    <section class="section proyectos" id="proyectos">
+        <div class="container">
+            <div class="section__header fade-in">
+                <span class="section__tag">Proyectos</span>
+                <h2 class="section__title">Casos de <span class="highlight">éxito</span></h2>
+                <p class="section__desc">Conocé algunos de los proyectos que hemos desarrollado para nuestros clientes.</p>
+            </div>
+
+            <div class="proyectos__grid">
+                <div class="proyecto__card fade-in">
+                    <div class="proyecto__banner proyecto__banner--1">
+                        <div class="proyecto__overlay">
+                            <span class="proyecto__tag">Web</span>
+                        </div>
+                    </div>
+                    <div class="proyecto__body">
+                        <h3 class="proyecto__title">Web institucional</h3>
+                        <p class="proyecto__desc">Sitio web corporativo moderno con panel de contenido dinámico, integración de redes sociales y formulario de contacto.</p>
+                    </div>
+                </div>
+
+                <div class="proyecto__card fade-in">
+                    <div class="proyecto__banner proyecto__banner--2">
+                        <div class="proyecto__overlay">
+                            <span class="proyecto__tag">Sistema</span>
+                        </div>
+                    </div>
+                    <div class="proyecto__body">
+                        <h3 class="proyecto__title">Sistema de inventario</h3>
+                        <p class="proyecto__desc">Plataforma web para control de stock, gestión de proveedores, alertas automáticas y reportes en tiempo real.</p>
+                    </div>
+                </div>
+
+                <div class="proyecto__card fade-in">
+                    <div class="proyecto__banner proyecto__banner--3">
+                        <div class="proyecto__overlay">
+                            <span class="proyecto__tag">E-commerce</span>
+                        </div>
+                    </div>
+                    <div class="proyecto__body">
+                        <h3 class="proyecto__title">Tienda online</h3>
+                        <p class="proyecto__desc">Tienda virtual completa con carrito, pasarela de pago, panel de administración y dashboard de ventas.</p>
+                    </div>
+                </div>
+
+                <div class="proyecto__card fade-in">
+                    <div class="proyecto__banner proyecto__banner--4">
+                        <div class="proyecto__overlay">
+                            <span class="proyecto__tag">Dashboard</span>
+                        </div>
+                    </div>
+                    <div class="proyecto__body">
+                        <h3 class="proyecto__title">Panel administrativo</h3>
+                        <p class="proyecto__desc">Dashboard interactivo con gráficos, métricas clave, gestión de usuarios y exportación de datos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PROCESO ========== -->
+    <section class="section proceso" id="proceso">
+        <div class="container">
+            <div class="section__header fade-in">
+                <span class="section__tag">Proceso</span>
+                <h2 class="section__title">Cómo <span class="highlight">trabajamos</span></h2>
+                <p class="section__desc">Un proceso claro y transparente para llevar tu idea desde el papel hasta la pantalla.</p>
+            </div>
+
+            <div class="proceso__steps">
+                <div class="proceso__step fade-in">
+                    <div class="proceso__number">01</div>
+                    <div class="proceso__content">
+                        <h3>Escuchamos tu idea</h3>
+                        <p>Nos reunimos con vos para entender tu negocio, tus objetivos y lo que necesitas lograr.</p>
+                    </div>
+                </div>
+
+                <div class="proceso__step fade-in">
+                    <div class="proceso__number">02</div>
+                    <div class="proceso__content">
+                        <h3>Diseñamos la solución</h3>
+                        <p>Creamos los prototipos y definimos la arquitectura técnica más adecuada para tu proyecto.</p>
+                    </div>
+                </div>
+
+                <div class="proceso__step fade-in">
+                    <div class="proceso__number">03</div>
+                    <div class="proceso__content">
+                        <h3>Desarrollamos el sistema</h3>
+                        <p>Escribimos código limpio y probado, manteniéndote al tanto de cada avance del proyecto.</p>
+                    </div>
+                </div>
+
+                <div class="proceso__step fade-in">
+                    <div class="proceso__number">04</div>
+                    <div class="proceso__content">
+                        <h3>Entregamos y acompañamos</h3>
+                        <p>Implementamos la solución, capacitamos a tu equipo y te brindamos soporte continuo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACTO ========== -->
+    <section class="section contacto" id="contacto">
+        <div class="container">
+            <div class="section__header fade-in">
+                <span class="section__tag">Contacto</span>
+                <h2 class="section__title">Hablemos de tu <span class="highlight">próximo proyecto</span></h2>
+                <p class="section__desc">Contanos tu idea y te responderemos a la brevedad. Sin compromiso.</p>
+            </div>
+
+            <div class="contacto__grid">
+                <form class="contacto__form fade-in" id="contactForm">
+                    <div class="form__group">
+                        <label for="nombre" class="form__label">Nombre completo</label>
+                        <input type="text" id="nombre" class="form__input" placeholder="Ej: Juan Pérez" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="email" class="form__label">Correo electrónico</label>
+                        <input type="email" id="email" class="form__input" placeholder="Ej: juan@ejemplo.com" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="telefono" class="form__label">Teléfono</label>
+                        <input type="tel" id="telefono" class="form__input" placeholder="Ej: +54 9 264 000 0000">
+                    </div>
+                    <div class="form__group">
+                        <label for="mensaje" class="form__label">Mensaje</label>
+                        <textarea id="mensaje" class="form__input form__textarea" placeholder="Contanos en qué podemos ayudarte..." rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--lg form__btn">Enviar consulta</button>
+                </form>
+
+                <div class="contacto__info fade-in">
+                    <div class="contacto__item">
+                        <div class="contacto__item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Ubicación</h4>
+                            <p>San Juan, Argentina</p>
+                        </div>
+                    </div>
+                    <div class="contacto__item">
+                        <div class="contacto__item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p>+54 9 264 000 0000</p>
+                        </div>
+                    </div>
+                    <div class="contacto__item">
+                        <div class="contacto__item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>contacto@impulsodigital.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contacto__social">
+                        <h4>Seguinos</h4>
+                        <div class="contacto__social-icons">
+                            <a href="#" class="contacto__social-link" aria-label="LinkedIn">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8.1 18H5.5v-8.5h2.6V18zM6.8 8.3c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5zM18 18h-2.6v-4.1c0-1-.4-1.7-1.4-1.7s-1.6.7-1.6 1.7V18H9.8V9.5h2.6v1.2c.4-.6 1.1-1.2 2.2-1.2 1.6 0 2.8 1 2.8 3.2V18z"/></svg>
+                            </a>
+                            <a href="#" class="contacto__social-link" aria-label="Instagram">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.1.1 1.8.3 2.5.6.7.3 1.3.7 1.8 1.2.5.5.9 1.1 1.2 1.8.3.7.5 1.4.6 2.5.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.1-.3 1.8-.6 2.5-.3.7-.7 1.3-1.2 1.8-.5.5-1.1.9-1.8 1.2-.7.3-1.4.5-2.5.6-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.1-.1-1.8-.3-2.5-.6-.7-.3-1.3-.7-1.8-1.2-.5-.5-.9-1.1-1.2-1.8-.3-.7-.5-1.4-.6-2.5-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-1.1.3-1.8.6-2.5.3-.7.7-1.3 1.2-1.8.5-.5 1.1-.9 1.8-1.2.7-.3 1.4-.5 2.5-.6 1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 5.8.2 5 .4 4.2.8 3.4 1.2 2.7 1.7 2 2.4 1.3 3.1.8 3.8.4 4.6.1 5.4 0 6.2-.1 7.5 0 8.7 0 9.1 0 12s0 3.3.1 4.5c.1 1.3.3 2.1.7 2.9.4.8.9 1.5 1.6 2.2.7.7 1.4 1.2 2.2 1.6.8.4 1.6.6 2.9.7 1.2.1 1.6.1 4.5.1s3.3 0 4.5-.1c1.3-.1 2.1-.3 2.9-.7.8-.4 1.5-.9 2.2-1.6.7-.7 1.2-1.4 1.6-2.2.4-.8.6-1.6.7-2.9.1-1.2.1-1.6.1-4.5s0-3.3-.1-4.5c-.1-1.3-.3-2.1-.7-2.9-.4-.8-.9-1.5-1.6-2.2-.7-.7-1.4-1.2-2.2-1.6-.8-.4-1.6-.6-2.9-.7C15.3 0 14.9 0 12 0zm0 5.8a6.2 6.2 0 110 12.4 6.2 6.2 0 010-12.4zm0 10.2a4 4 0 100-8 4 4 0 000 8zm6.4-10.6a1.4 1.4 0 110 2.8 1.4 1.4 0 010-2.8z"/></svg>
+                            </a>
+                            <a href="#" class="contacto__social-link" aria-label="GitHub">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.3-3.3-.1-.3-.6-1.6.1-3.3 0 0 1.1-.3 3.5 1.3 1-.3 2.1-.4 3.2-.4 1.1 0 2.2.1 3.2.4 2.4-1.6 3.5-1.3 3.5-1.3.7 1.7.2 3 .1 3.3.8.9 1.3 2 1.3 3.3 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6C20.6 21.8 24 17.3 24 12c0-6.6-5.4-12-12-12z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="#" class="logo footer__logo">
+                        <svg class="logo__icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="20" cy="20" r="19" stroke="#38BDF8" stroke-width="2"/>
+                            <path d="M12 28L18 20L22 24L28 14" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="12" cy="28" r="2.5" fill="#38BDF8"/>
+                            <circle cx="18" cy="20" r="2.5" fill="#FFFFFF"/>
+                            <circle cx="22" cy="24" r="2.5" fill="#38BDF8"/>
+                            <circle cx="28" cy="14" r="2.5" fill="#FFFFFF"/>
+                            <path d="M28 14L32 10" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                        <span class="logo__text">
+                            <span class="logo__impulso logo__impulso--white">Impulso</span>
+                            <span class="logo__digital">Digital</span>
+                        </span>
+                    </a>
+                    <p class="footer__desc">Desarrollamos soluciones digitales a medida para impulsar tu negocio al siguiente nivel. Tecnología, diseño y compromiso.</p>
+                </div>
+
+                <div class="footer__links">
+                    <h4 class="footer__heading">Links rápidos</h4>
+                    <ul>
+                        <li><a href="#hero">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#proyectos">Proyectos</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__links">
+                    <h4 class="footer__heading">Servicios</h4>
+                    <ul>
+                        <li><a href="#servicios">Páginas web</a></li>
+                        <li><a href="#servicios">Sistemas de gestión</a></li>
+                        <li><a href="#servicios">Tiendas online</a></li>
+                        <li><a href="#servicios">Automatización</a></li>
+                        <li><a href="#servicios">Diseño UI/UX</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h4 class="footer__heading">Contacto</h4>
+                    <ul>
+                        <li>San Juan, Argentina</li>
+                        <li>+54 9 264 000 0000</li>
+                        <li>contacto@impulsodigital.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2026 Impulso Digital. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
