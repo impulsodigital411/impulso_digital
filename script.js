@@ -6,20 +6,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger');
     const nav = document.getElementById('nav');
 
-    hamburger.addEventListener('click', () => {
+    hamburger?.addEventListener('click', () => {
         hamburger.classList.toggle('active');
-        nav.classList.toggle('active');
+        nav?.classList.toggle('active');
     });
 
     document.querySelectorAll('.nav__link').forEach(link => {
         link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            nav.classList.remove('active');
+            hamburger?.classList.remove('active');
+            nav?.classList.remove('active');
         });
     });
 
     document.addEventListener('click', (e) => {
-        if (!nav.contains(e.target) && !hamburger.contains(e.target) && nav.classList.contains('active')) {
+        if (nav && hamburger && !nav.contains(e.target) && !hamburger.contains(e.target) && nav.classList.contains('active')) {
             hamburger.classList.remove('active');
             nav.classList.remove('active');
         }
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.getElementById('header');
 
     window.addEventListener('scroll', () => {
-        header.classList.toggle('header--scrolled', window.scrollY > 50);
+        header?.classList.toggle('header--scrolled', window.scrollY > 50);
     });
 
     // ==========================================
@@ -101,10 +101,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     const form = document.getElementById('contactForm');
 
-    form.addEventListener('submit', (e) => {
+    form?.addEventListener('submit', (e) => {
         e.preventDefault();
 
         const nombre = document.getElementById('nombre').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const telefono = document.getElementById('telefono').value.trim();
         const mensaje = document.getElementById('mensaje').value.trim();
         const btn = form.querySelector('.form__btn');
 
@@ -126,6 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.disabled = true;
 
         setTimeout(() => {
+            guardarConsultaTemporal({ nombre, email, telefono, mensaje });
+
             btn.textContent = '¡Mensaje enviado!';
             btn.style.background = '#10B981';
             btn.style.borderColor = '#10B981';
@@ -140,5 +144,31 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 3000);
         }, 1200);
     });
+
+    function guardarConsultaTemporal({ nombre, email, telefono, mensaje }) {
+        const storageKey = 'impulso_consultas_demo';
+        const guardadas = localStorage.getItem(storageKey);
+        let consultas = [];
+
+        try {
+            consultas = guardadas ? JSON.parse(guardadas) : [];
+            if (!Array.isArray(consultas)) consultas = [];
+        } catch (error) {
+            consultas = [];
+        }
+
+        const nuevaConsulta = {
+            id: Date.now(),
+            fecha: new Date().toISOString().slice(0, 10),
+            nombre,
+            telefono: telefono || 'Sin telefono',
+            email: email || 'Sin email',
+            servicio: 'Consulta desde formulario web',
+            mensaje,
+            estado: 'pendiente'
+        };
+
+        localStorage.setItem(storageKey, JSON.stringify([nuevaConsulta, ...consultas]));
+    }
 
 });

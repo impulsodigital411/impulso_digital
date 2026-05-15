@@ -1,52 +1,87 @@
-// TODO: Activar cuando esté listo el login.
+// TODO: Activar cuando esté listo el login real.
 // const session = localStorage.getItem("impulso_admin_session");
 // if (!session) {
 //     window.location.href = "login.html";
 // }
 
-// TODO: Reemplazar datos simulados por consulta real a Supabase.
-// TODO: Usar obtenerConsultas() desde supabaseClient.js.
-// TODO: Usar actualizarEstadoConsulta() para cambiar estados.
-// TODO: Usar eliminarConsulta() para eliminar o archivar registros.
+// Persistencia temporal hasta conectar base de datos/API.
+const STORAGE_KEY = "impulso_consultas_demo";
 
-let consultas = [
+const consultasDemo = [
     {
         id: 1,
         fecha: "2026-05-14",
-        nombre: "Juan Pérez",
+        nombre: "Juan Perez",
         telefono: "2645000001",
-        servicio: "Diseño de página web",
-        mensaje: "Quiero consultar por una página para mi negocio.",
+        email: "juan@ejemplo.com",
+        servicio: "Desarrollo de pagina web",
+        mensaje: "Quiero consultar por una pagina para mi negocio.",
         estado: "pendiente"
     },
     {
         id: 2,
         fecha: "2026-05-13",
-        nombre: "María Gómez",
+        nombre: "Maria Gomez",
         telefono: "2645000002",
-        servicio: "Gestión de redes sociales",
+        email: "maria@ejemplo.com",
+        servicio: "Gestion de redes sociales",
         mensaje: "Necesito ayuda con publicaciones para Instagram.",
         estado: "respondida"
     },
     {
         id: 3,
         fecha: "2026-05-12",
-        nombre: "Carlos Díaz",
+        nombre: "Carlos Diaz",
         telefono: "2645000003",
+        email: "carlos@ejemplo.com",
         servicio: "Publicidad digital",
-        mensaje: "Quiero información sobre campañas pagas.",
+        mensaje: "Quiero informacion sobre campanas pagas.",
         estado: "pendiente"
     },
     {
         id: 4,
         fecha: "2026-05-11",
-        nombre: "Lucía Fernández",
+        nombre: "Lucia Fernandez",
         telefono: "2645000004",
+        email: "lucia@ejemplo.com",
         servicio: "Identidad visual",
         mensaje: "Necesito logo y placas para redes.",
         estado: "cancelada"
     }
 ];
+
+let consultas = cargarDesdeStorage();
+
+function cargarDesdeStorage() {
+    const guardadas = localStorage.getItem(STORAGE_KEY);
+
+    if (!guardadas) {
+        guardarEnStorage(consultasDemo);
+        return [...consultasDemo];
+    }
+
+    try {
+        const datos = JSON.parse(guardadas);
+        return Array.isArray(datos) ? datos : [...consultasDemo];
+    } catch (error) {
+        guardarEnStorage(consultasDemo);
+        return [...consultasDemo];
+    }
+}
+
+function guardarEnStorage(lista = consultas) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(lista));
+}
+
+function obtenerEstadoLabel(estado) {
+    const labels = {
+        pendiente: "Pendiente",
+        respondida: "Respondida",
+        cancelada: "Cancelada"
+    };
+
+    return labels[estado] || "Pendiente";
+}
 
 function renderizarConsultas(lista) {
     const tbody = document.getElementById("tablaConsultasBody");
@@ -57,54 +92,55 @@ function renderizarConsultas(lista) {
         return;
     }
 
-    tbody.innerHTML = lista.map(c => {
-        const estadoLabel = c.estado.charAt(0).toUpperCase() + c.estado.slice(1);
-        return `
-            <tr>
-                <td>${c.fecha}</td>
-                <td>${c.nombre}</td>
-                <td>${c.telefono}</td>
-                <td>${c.servicio}</td>
-                <td class="table__msg">${c.mensaje}</td>
-                <td><span class="estado estado-${c.estado}">${estadoLabel}</span></td>
-                <td>
-                    <div class="acciones">
-                        <button class="acciones__btn acciones__btn--pendiente" data-id="${c.id}" data-estado="pendiente" title="Marcar pendiente">Pendiente</button>
-                        <button class="acciones__btn acciones__btn--respondida" data-id="${c.id}" data-estado="respondida" title="Marcar respondida">Respondida</button>
-                        <button class="acciones__btn acciones__btn--cancelada" data-id="${c.id}" data-estado="cancelada" title="Cancelar">Cancelar</button>
-                        <button class="acciones__btn acciones__btn--eliminar" data-id="${c.id}" title="Eliminar">Eliminar</button>
-                    </div>
-                </td>
-            </tr>
-        `;
-    }).join("");
+    tbody.innerHTML = lista.map(c => `
+        <tr>
+            <td>${c.fecha || "-"}</td>
+            <td>
+                <div class="cliente">
+                    <strong>${c.nombre || "Sin nombre"}</strong>
+                    <span>${c.email || "Sin email"}</span>
+                </div>
+            </td>
+            <td>${c.telefono || "-"}</td>
+            <td>${c.servicio || "Consulta general"}</td>
+            <td class="table__msg" title="${c.mensaje || ""}">${c.mensaje || "-"}</td>
+            <td><span class="estado estado-${c.estado}">${obtenerEstadoLabel(c.estado)}</span></td>
+            <td>
+                <div class="acciones">
+                    <button class="acciones__btn acciones__btn--pendiente" data-id="${c.id}" data-estado="pendiente" type="button">Pendiente</button>
+                    <button class="acciones__btn acciones__btn--respondida" data-id="${c.id}" data-estado="respondida" type="button">Respondida</button>
+                    <button class="acciones__btn acciones__btn--cancelada" data-id="${c.id}" data-estado="cancelada" type="button">Cancelar</button>
+                    <button class="acciones__btn acciones__btn--eliminar" data-id="${c.id}" type="button">Eliminar</button>
+                </div>
+            </td>
+        </tr>
+    `).join("");
 
-    document.querySelectorAll(".acciones__btn--pendiente, .acciones__btn--respondida, .acciones__btn--cancelada").forEach(btn => {
+    document.querySelectorAll(".acciones__btn[data-estado]").forEach(btn => {
         btn.addEventListener("click", (e) => {
-            const id = parseInt(e.target.dataset.id);
-            const nuevoEstado = e.target.dataset.estado;
+            const id = Number(e.currentTarget.dataset.id);
+            const nuevoEstado = e.currentTarget.dataset.estado;
             cambiarEstado(id, nuevoEstado);
         });
     });
 
     document.querySelectorAll(".acciones__btn--eliminar").forEach(btn => {
         btn.addEventListener("click", (e) => {
-            const id = parseInt(e.target.dataset.id);
+            const id = Number(e.currentTarget.dataset.id);
             eliminarConsulta(id);
         });
     });
 }
 
 function cargarConsultas() {
-    renderizarConsultas(consultas);
-    actualizarTotal();
+    filtrarConsultas();
 }
 
 function filtrarConsultas() {
-    const filtroEstado = document.getElementById("filtroEstado").value;
-    const buscador = document.getElementById("buscadorConsultas").value.toLowerCase().trim();
+    const filtroEstado = document.getElementById("filtroEstado")?.value || "todas";
+    const buscador = (document.getElementById("buscadorConsultas")?.value || "").toLowerCase().trim();
 
-    let filtradas = consultas;
+    let filtradas = [...consultas];
 
     if (filtroEstado !== "todas") {
         filtradas = filtradas.filter(c => c.estado === filtroEstado);
@@ -112,9 +148,11 @@ function filtrarConsultas() {
 
     if (buscador) {
         filtradas = filtradas.filter(c =>
-            c.nombre.toLowerCase().includes(buscador) ||
-            c.telefono.includes(buscador) ||
-            c.servicio.toLowerCase().includes(buscador)
+            (c.nombre || "").toLowerCase().includes(buscador) ||
+            (c.telefono || "").toLowerCase().includes(buscador) ||
+            (c.email || "").toLowerCase().includes(buscador) ||
+            (c.servicio || "").toLowerCase().includes(buscador) ||
+            (c.mensaje || "").toLowerCase().includes(buscador)
         );
     }
 
@@ -123,38 +161,35 @@ function filtrarConsultas() {
 }
 
 function cambiarEstado(id, nuevoEstado) {
-    const consulta = consultas.find(c => c.id === id);
-    if (consulta) {
-        consulta.estado = nuevoEstado;
-        filtrarConsultas();
-    }
+    consultas = consultas.map(consulta => (
+        consulta.id === id ? { ...consulta, estado: nuevoEstado } : consulta
+    ));
+    guardarEnStorage();
+    filtrarConsultas();
 }
 
 function eliminarConsulta(id) {
     consultas = consultas.filter(c => c.id !== id);
+    guardarEnStorage();
     filtrarConsultas();
 }
 
 function actualizarTotal(cantidad) {
     const totalEl = document.getElementById("totalConsultas");
-    if (totalEl) {
-        totalEl.textContent = cantidad !== undefined ? cantidad : consultas.length;
-    }
+    if (totalEl) totalEl.textContent = cantidad;
 }
 
 function cerrarSesion() {
+    // Temporal: no hay login real todavia. Se vuelve al sitio publico.
     localStorage.removeItem("impulso_admin_session");
-    window.location.href = "login.html";
+    window.location.href = "../index.html";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     cargarConsultas();
 
-    document.getElementById("filtroEstado").addEventListener("change", filtrarConsultas);
-    document.getElementById("buscadorConsultas").addEventListener("input", filtrarConsultas);
+    document.getElementById("filtroEstado")?.addEventListener("change", filtrarConsultas);
+    document.getElementById("buscadorConsultas")?.addEventListener("input", filtrarConsultas);
 
-    const btnCerrar = document.getElementById("btnCerrarSesion");
-    if (btnCerrar) {
-        btnCerrar.addEventListener("click", cerrarSesion);
-    }
+    document.getElementById("btnCerrarSesion")?.addEventListener("click", cerrarSesion);
 });

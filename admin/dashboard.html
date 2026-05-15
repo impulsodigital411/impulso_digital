@@ -3,153 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel Administrativo - IMPULSO DIGITAL</title>
+    <title>Dashboard - IMPULSO DIGITAL</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="../imagenes/logo/impulso-digital.png">
     <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
     <div class="admin-layout">
-
-        <!-- ========== SIDEBAR ========== -->
         <aside class="sidebar">
             <div class="sidebar__header">
                 <a href="../index.html" class="sidebar__logo">
-                    <svg class="sidebar__logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="20" cy="20" r="19" stroke="#38BDF8" stroke-width="2"/>
-                        <path d="M12 28L18 20L22 24L28 14" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="12" cy="28" r="2.5" fill="#38BDF8"/>
-                        <circle cx="18" cy="20" r="2.5" fill="#FFFFFF"/>
-                        <circle cx="22" cy="24" r="2.5" fill="#38BDF8"/>
-                        <circle cx="28" cy="14" r="2.5" fill="#FFFFFF"/>
-                        <path d="M28 14L32 10" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
-                    </svg>
-                    <span class="sidebar__brand">Impulso Digital</span>
+                    <img class="sidebar__logo-img" src="../imagenes/logo/impulso-digital.png" alt="Logo IMPULSO DIGITAL" onerror="this.style.display='none'">
+                    <!-- Ruta preparada para el logo oficial: ../imagenes/logo/impulso-digital.png -->
+                    <span class="sidebar__brand-wrap">
+                        <span class="sidebar__brand">IMPULSO DIGITAL</span>
+                        <span class="sidebar__subtitle">Panel administrativo</span>
+                    </span>
                 </a>
             </div>
 
             <nav class="sidebar__nav">
-                <span class="sidebar__label">Menú</span>
+                <span class="sidebar__label">Administración</span>
                 <ul class="sidebar__list">
-                    <li>
-                        <a href="dashboard.html" class="sidebar__link sidebar__link--active">
-                            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-                            Dashboard
-                        </a>
-                    </li>
-                    <li>
-                        <a href="consultas.html" class="sidebar__link">
-                            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                            Consultas
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="sidebar__link">
-                            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                            Servicios
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="sidebar__link">
-                            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-                            Categorías
-                        </a>
-                    </li>
+                    <li><a href="dashboard.html" class="sidebar__link sidebar__link--active"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Dashboard</a></li>
+                    <li><a href="consultas.html" class="sidebar__link"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M8 9h8M8 13h5"/></svg>Consultas</a></li>
+                    <li><a href="servicios.html" class="sidebar__link"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>Servicios</a></li>
+                    <li><a href="categorias.html" class="sidebar__link"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 12 22l-9-9V4h9l8.59 8.59a2 2 0 0 1 0 2.82Z"/><path d="M7 7h.01"/></svg>Categorías</a></li>
                 </ul>
             </nav>
 
             <div class="sidebar__footer">
-                <button id="btnCerrarSesion" class="sidebar__btn-cerrar">
-                    <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-                    Cerrar sesión
-                </button>
+                <button id="btnCerrarSesion" class="sidebar__btn-cerrar"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>Cerrar sesión</button>
             </div>
         </aside>
 
-        <!-- ========== MAIN CONTENT ========== -->
         <main class="main-content">
-
-            <!-- Header -->
             <header class="topbar">
-                <div class="topbar__left">
-                    <h1 class="topbar__title">Panel Administrativo IMPULSO DIGITAL</h1>
+                <div>
+                    <span class="topbar__eyebrow">IMPULSO DIGITAL</span>
+                    <h1 class="topbar__title">Dashboard</h1>
+                    <p class="topbar__subtitle">Resumen general del panel administrativo de IMPULSO DIGITAL</p>
                 </div>
                 <div class="topbar__right">
+                    <span class="topbar__badge">Modo desarrollo</span>
                     <span class="topbar__badge">Administrador</span>
                 </div>
             </header>
 
-            <!-- Content -->
             <div class="content">
-
-                <!-- Cards -->
-                <section class="cards-grid">
-                    <div class="card card--blue">
-                        <div class="card__icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                        </div>
-                        <div class="card__info">
-                            <span class="card__number" id="totalConsultas">0</span>
-                            <span class="card__label">Consultas recibidas</span>
-                        </div>
-                    </div>
-
-                    <div class="card card--yellow">
-                        <div class="card__icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v2m0 4h.01M12 2l10 18H2L12 2z"/></svg>
-                        </div>
-                        <div class="card__info">
-                            <span class="card__number" id="consultasPendientes">0</span>
-                            <span class="card__label">Consultas pendientes</span>
-                        </div>
-                    </div>
-
-                    <div class="card card--green">
-                        <div class="card__icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-                        </div>
-                        <div class="card__info">
-                            <span class="card__number" id="consultasRespondidas">0</span>
-                            <span class="card__label">Consultas respondidas</span>
-                        </div>
-                    </div>
-
-                    <div class="card card--purple">
-                        <div class="card__icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                        </div>
-                        <div class="card__info">
-                            <span class="card__number" id="serviciosActivos">0</span>
-                            <span class="card__label">Servicios activos</span>
-                        </div>
-                    </div>
+                <section class="cards-grid" aria-label="Indicadores principales">
+                    <article class="card card--blue">
+                        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg></div>
+                        <div class="card__info"><span class="card__number" id="totalConsultas">0</span><span class="card__label">Consultas recibidas</span><span class="card__desc">Mensajes ingresados desde el sitio público.</span></div>
+                    </article>
+                    <article class="card card--yellow">
+                        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+                        <div class="card__info"><span class="card__number" id="consultasPendientes">0</span><span class="card__label">Consultas pendientes</span><span class="card__desc">Solicitudes que todavía requieren respuesta.</span></div>
+                    </article>
+                    <article class="card card--green">
+                        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+                        <div class="card__info"><span class="card__number" id="consultasRespondidas">0</span><span class="card__label">Consultas respondidas</span><span class="card__desc">Mensajes gestionados por el equipo.</span></div>
+                    </article>
+                    <article class="card card--purple">
+                        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg></div>
+                        <div class="card__info"><span class="card__number" id="serviciosActivos">6</span><span class="card__label">Servicios activos</span><span class="card__desc">Oferta actual visible para clientes.</span></div>
+                    </article>
                 </section>
 
-                <!-- Latest consultations -->
-                <section class="section-block">
-                    <div class="section-block__header">
-                        <h2 class="section-block__title">Últimas consultas recibidas</h2>
-                    </div>
-                    <div class="table-wrapper">
-                        <table class="table" id="tablaUltimasConsultas">
-                            <thead>
-                                <tr>
-                                    <th>Fecha</th>
-                                    <th>Cliente</th>
-                                    <th>Servicio</th>
-                                    <th>Estado</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tablaUltimasConsultasBody">
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
+                <div class="dashboard-grid">
+                    <section class="section-block">
+                        <div class="section-block__header">
+                            <div>
+                                <h2 class="section-block__title">Últimas consultas recibidas</h2>
+                                <p class="section-block__desc">Datos temporales sincronizados con localStorage.</p>
+                            </div>
+                            <a href="consultas.html" class="admin-btn admin-btn--ghost">Ver consultas</a>
+                        </div>
+                        <div class="table-wrapper">
+                            <table class="table">
+                                <thead><tr><th>Fecha</th><th>Cliente</th><th>Servicio</th><th>Estado</th></tr></thead>
+                                <tbody id="tablaUltimasConsultasBody"></tbody>
+                            </table>
+                        </div>
+                    </section>
 
+                    <aside class="section-block">
+                        <div class="section-block__header">
+                            <div>
+                                <h2 class="section-block__title">Actividad reciente</h2>
+                                <p class="section-block__desc">Resumen rápido del panel.</p>
+                            </div>
+                        </div>
+                        <div class="activity-list" id="actividadReciente"></div>
+                    </aside>
+                </div>
             </div>
         </main>
-
     </div>
 
     <script src="../js/dashboard.js"></script>
