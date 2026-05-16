@@ -68,7 +68,7 @@
                     </article>
                     <article class="card card--purple">
                         <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg></div>
-                        <div class="card__info"><span class="card__number" id="serviciosActivos">6</span><span class="card__label">Servicios activos</span><span class="card__desc">Oferta actual visible para clientes.</span></div>
+                        <div class="card__info"><span class="card__number" id="ultimasConsultas">0</span><span class="card__label">Últimas visibles</span><span class="card__desc">Consultas recientes listadas abajo.</span></div>
                     </article>
                 </section>
 
@@ -77,7 +77,7 @@
                         <div class="section-block__header">
                             <div>
                                 <h2 class="section-block__title">Últimas consultas recibidas</h2>
-                                <p class="section-block__desc">Datos temporales sincronizados con localStorage.</p>
+                                <p class="section-block__desc">Datos reales cargados desde Supabase.</p>
                             </div>
                             <a href="consultas.html" class="admin-btn admin-btn--ghost">Ver consultas</a>
                         </div>
@@ -103,6 +103,8 @@
         </main>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase.js"></script>
     <script src="../js/dashboard.js"></script>
 </body>
 </html>

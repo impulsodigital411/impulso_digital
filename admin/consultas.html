@@ -56,15 +56,14 @@
                 <section class="filters">
                     <div class="filters__group">
                         <label for="buscadorConsultas" class="filters__label">Buscar</label>
-                        <input type="text" id="buscadorConsultas" class="filters__input" placeholder="Buscar por nombre, teléfono, email, servicio o mensaje">
+                        <input type="text" id="buscadorConsultas" class="filters__input" placeholder="Buscar por nombre, teléfono, email, servicio o estado">
                     </div>
                     <div class="filters__group">
                         <label for="filtroEstado" class="filters__label">Estado</label>
                         <select id="filtroEstado" class="filters__select">
                             <option value="todas">Todas</option>
                             <option value="pendiente">Pendiente</option>
-                            <option value="respondida">Respondida</option>
-                            <option value="cancelada">Cancelada</option>
+                            <option value="respondido">Respondidas</option>
                         </select>
                     </div>
                     <div class="filters__info">Total visible: <strong id="totalConsultas">0</strong></div>
@@ -74,7 +73,7 @@
                     <div class="section-block__header">
                         <div>
                             <h2 class="section-block__title">Bandeja de consultas</h2>
-                            <p class="section-block__desc">Los cambios se guardan en el navegador hasta conectar la base de datos real.</p>
+                            <p class="section-block__desc">Datos reales cargados desde Supabase.</p>
                         </div>
                     </div>
                     <div class="table-wrapper">
@@ -98,6 +97,8 @@
         </main>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase.js"></script>
     <script src="../js/consultas.js"></script>
 </body>
 </html>

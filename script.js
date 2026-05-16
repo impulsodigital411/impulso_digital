@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
-    // MENÚ HAMBURGUESA
+    // MENU HAMBURGUESA
     // ==========================================
     const hamburger = document.getElementById('hamburger');
     const nav = document.getElementById('nav');
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeElements.forEach(el => observer.observe(el));
 
     // ==========================================
-    // CONTADOR DE ESTADÍSTICAS
+    // CONTADOR DE ESTADISTICAS
     // ==========================================
     const statNumbers = document.querySelectorAll('.nosotros__stat-number');
 
@@ -97,78 +97,88 @@ document.addEventListener('DOMContentLoaded', () => {
     statNumbers.forEach(el => counterObserver.observe(el));
 
     // ==========================================
-    // FORMULARIO
+    // FORMULARIO DE CONSULTA
     // ==========================================
     const form = document.getElementById('contactForm');
 
-    form?.addEventListener('submit', (e) => {
+    form?.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const nombre = document.getElementById('nombre').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const telefono = document.getElementById('telefono').value.trim();
-        const mensaje = document.getElementById('mensaje').value.trim();
+        const nombre = document.getElementById('nombre')?.value.trim() || '';
+        const email = document.getElementById('email')?.value.trim() || '';
+        const telefono = document.getElementById('telefono')?.value.trim() || '';
+        const servicio = document.getElementById('servicio')?.value.trim() || '';
+        const mensaje = document.getElementById('mensaje')?.value.trim() || '';
         const btn = form.querySelector('.form__btn');
 
-        if (!nombre || !mensaje) {
-            btn.textContent = 'Completá los campos requeridos';
-            btn.style.background = '#dc2626';
-            btn.style.borderColor = '#dc2626';
+        if (!nombre || !email || !mensaje) {
+            mostrarEstadoFormulario('Completá nombre, email y mensaje antes de enviar.', 'error');
+            return;
+        }
 
-            setTimeout(() => {
-                btn.textContent = 'Enviar consulta';
-                btn.style.background = '';
-                btn.style.borderColor = '';
-            }, 2500);
-
+        if (typeof db === 'undefined') {
+            mostrarEstadoFormulario('No se pudo iniciar la conexión con Supabase.', 'error');
             return;
         }
 
         btn.textContent = 'Enviando...';
         btn.disabled = true;
+        mostrarEstadoFormulario('', '');
 
-        setTimeout(() => {
-            guardarConsultaTemporal({ nombre, email, telefono, mensaje });
+        try {
+            await insertarConsulta({
+                nombre_cliente: nombre,
+                telefono: telefono || null,
+                email,
+                servicio: servicio || null,
+                mensaje,
+                estado: 'pendiente'
+            });
 
-            btn.textContent = '¡Mensaje enviado!';
-            btn.style.background = '#10B981';
-            btn.style.borderColor = '#10B981';
-
+            mostrarEstadoFormulario('Consulta enviada correctamente. Te responderemos a la brevedad.', 'success');
             form.reset();
+            btn.textContent = 'Consulta enviada';
 
             setTimeout(() => {
                 btn.textContent = 'Enviar consulta';
-                btn.style.background = '';
-                btn.style.borderColor = '';
                 btn.disabled = false;
-            }, 3000);
-        }, 1200);
+            }, 2500);
+        } catch (error) {
+            console.error(error);
+            mostrarEstadoFormulario('No se pudo enviar la consulta. Intentá nuevamente en unos minutos.', 'error');
+            btn.textContent = 'Enviar consulta';
+            btn.disabled = false;
+        }
     });
 
-    function guardarConsultaTemporal({ nombre, email, telefono, mensaje }) {
-        const storageKey = 'impulso_consultas_demo';
-        const guardadas = localStorage.getItem(storageKey);
-        let consultas = [];
+    async function insertarConsulta(consulta) {
+        const { error } = await db.from('consultas').insert([consulta]);
 
-        try {
-            consultas = guardadas ? JSON.parse(guardadas) : [];
-            if (!Array.isArray(consultas)) consultas = [];
-        } catch (error) {
-            consultas = [];
+        if (!error) return;
+
+        if (String(error.message || '').includes('servicio')) {
+            const { servicio, ...consultaSinServicio } = consulta;
+            const { error: fallbackError } = await db
+                .from('consultas')
+                .insert([{ ...consultaSinServicio, servicio_consultado: servicio }]);
+
+            if (!fallbackError) return;
+            throw fallbackError;
         }
 
-        const nuevaConsulta = {
-            id: Date.now(),
-            fecha: new Date().toISOString().slice(0, 10),
-            nombre,
-            telefono: telefono || 'Sin telefono',
-            email: email || 'Sin email',
-            servicio: 'Consulta desde formulario web',
-            mensaje,
-            estado: 'pendiente'
-        };
+        throw error;
+    }
 
-        localStorage.setItem(storageKey, JSON.stringify([nuevaConsulta, ...consultas]));
+    function mostrarEstadoFormulario(mensaje, tipo) {
+        const estado = document.getElementById('contactFormStatus');
+        if (!estado) return;
+
+        estado.textContent = mensaje;
+        estado.className = 'form__status';
+
+        if (tipo) {
+            estado.classList.add(`form__status--${tipo}`);
+        }
     }
 
 });

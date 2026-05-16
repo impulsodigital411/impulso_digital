@@ -500,6 +500,11 @@ button, input, select { font: inherit; }
     background: #d1fae5;
 }
 
+.estado-respondido {
+    color: #047857;
+    background: #d1fae5;
+}
+
 .estado-cancelada {
     color: #b91c1c;
     background: #fee2e2;

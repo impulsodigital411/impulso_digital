@@ -4,125 +4,133 @@
 //     window.location.href = "login.html";
 // }
 
-const STORAGE_KEY = "impulso_consultas_demo";
-
-const consultasDemo = [
-    {
-        id: 1,
-        fecha: "2026-05-14",
-        nombre: "Juan Perez",
-        telefono: "2645000001",
-        email: "juan@ejemplo.com",
-        servicio: "Desarrollo de pagina web",
-        mensaje: "Quiero consultar por una pagina para mi negocio.",
-        estado: "pendiente"
-    },
-    {
-        id: 2,
-        fecha: "2026-05-13",
-        nombre: "Maria Gomez",
-        telefono: "2645000002",
-        email: "maria@ejemplo.com",
-        servicio: "Gestion de redes sociales",
-        mensaje: "Necesito ayuda con publicaciones para Instagram.",
-        estado: "respondida"
-    },
-    {
-        id: 3,
-        fecha: "2026-05-12",
-        nombre: "Carlos Diaz",
-        telefono: "2645000003",
-        email: "carlos@ejemplo.com",
-        servicio: "Publicidad digital",
-        mensaje: "Quiero informacion sobre campanas pagas.",
-        estado: "pendiente"
-    },
-    {
-        id: 4,
-        fecha: "2026-05-11",
-        nombre: "Lucia Fernandez",
-        telefono: "2645000004",
-        email: "lucia@ejemplo.com",
-        servicio: "Identidad visual",
-        mensaje: "Necesito logo y placas para redes.",
-        estado: "cancelada"
-    }
-];
-
-const serviciosActivos = 6;
-
-function obtenerConsultas() {
-    const guardadas = localStorage.getItem(STORAGE_KEY);
-
-    if (!guardadas) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(consultasDemo));
-        return [...consultasDemo];
-    }
-
-    try {
-        const datos = JSON.parse(guardadas);
-        return Array.isArray(datos) ? datos : [...consultasDemo];
-    } catch (error) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(consultasDemo));
-        return [...consultasDemo];
-    }
-}
-
 function obtenerEstadoLabel(estado) {
     const labels = {
         pendiente: "Pendiente",
-        respondida: "Respondida",
-        cancelada: "Cancelada"
+        respondido: "Respondido"
     };
 
     return labels[estado] || "Pendiente";
 }
 
-function calcularResumen(consultas) {
+function normalizarConsulta(consulta) {
+    const estado = consulta.estado === "respondida" ? "respondido" : (consulta.estado || "pendiente");
+
     return {
-        total: consultas.length,
-        pendientes: consultas.filter(c => c.estado === "pendiente").length,
-        respondidas: consultas.filter(c => c.estado === "respondida").length
+        id: consulta.id,
+        nombre_cliente: consulta.nombre_cliente || consulta.nombre || "",
+        telefono: consulta.telefono || "",
+        email: consulta.email || "",
+        servicio: consulta.servicio || consulta.servicio_consultado || "",
+        mensaje: consulta.mensaje || "",
+        estado,
+        created_at: consulta.created_at || consulta.fecha_consulta || ""
     };
 }
 
-function cargarDashboard() {
-    const consultas = obtenerConsultas();
-    const resumen = calcularResumen(consultas);
+function escaparHTML(valor) {
+    return String(valor ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
 
-    document.getElementById("totalConsultas").textContent = resumen.total;
-    document.getElementById("consultasPendientes").textContent = resumen.pendientes;
-    document.getElementById("consultasRespondidas").textContent = resumen.respondidas;
-    document.getElementById("serviciosActivos").textContent = serviciosActivos;
+function formatearFecha(valor) {
+    if (!valor) return "-";
 
-    cargarUltimasConsultas(consultas);
-    cargarActividadReciente(consultas, resumen);
+    const fecha = new Date(valor);
+    if (Number.isNaN(fecha.getTime())) return "-";
+
+    return fecha.toLocaleString("es-AR", {
+        dateStyle: "short",
+        timeStyle: "short"
+    });
+}
+
+async function obtenerConsultasDesdeSupabase() {
+    if (typeof db === "undefined") {
+        throw new Error("No se pudo iniciar la conexión con Supabase.");
+    }
+
+    const resultado = await db
+        .from("consultas")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+    if (!resultado.error) return resultado.data || [];
+
+    if (String(resultado.error.message || "").includes("created_at")) {
+        const fallback = await db
+            .from("consultas")
+            .select("*")
+            .order("fecha_consulta", { ascending: false });
+
+        if (!fallback.error) return fallback.data || [];
+        throw fallback.error;
+    }
+
+    throw resultado.error;
+}
+
+function calcularResumen(consultas) {
+    const ultimas = consultas.slice(0, 5);
+
+    return {
+        total: consultas.length,
+        pendientes: consultas.filter(c => c.estado === "pendiente").length,
+        respondidas: consultas.filter(c => c.estado === "respondido").length,
+        ultimas: ultimas.length
+    };
+}
+
+async function cargarDashboard() {
+    try {
+        const data = await obtenerConsultasDesdeSupabase();
+        const consultas = data.map(normalizarConsulta);
+        const resumen = calcularResumen(consultas);
+
+        document.getElementById("totalConsultas").textContent = resumen.total;
+        document.getElementById("consultasPendientes").textContent = resumen.pendientes;
+        document.getElementById("consultasRespondidas").textContent = resumen.respondidas;
+        document.getElementById("ultimasConsultas").textContent = resumen.ultimas;
+
+        cargarUltimasConsultas(consultas);
+        cargarActividadReciente(consultas, resumen);
+    } catch (error) {
+        console.error(error);
+        document.getElementById("totalConsultas").textContent = "0";
+        document.getElementById("consultasPendientes").textContent = "0";
+        document.getElementById("consultasRespondidas").textContent = "0";
+        document.getElementById("ultimasConsultas").textContent = "0";
+        cargarUltimasConsultas([]);
+        cargarActividadReciente([], { pendientes: 0, respondidas: 0 });
+    }
 }
 
 function cargarUltimasConsultas(consultas) {
     const tbody = document.getElementById("tablaUltimasConsultasBody");
     if (!tbody) return;
 
-    const ultimas = [...consultas]
-        .sort((a, b) => String(b.fecha).localeCompare(String(a.fecha)))
-        .slice(0, 5);
+    const ultimas = consultas.slice(0, 5);
 
     if (ultimas.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="4" class="table__empty">Todavia no hay consultas.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="4" class="table__empty">No hay consultas registradas</td></tr>`;
         return;
     }
 
     tbody.innerHTML = ultimas.map(c => `
         <tr>
-            <td>${c.fecha || "-"}</td>
+            <td>${escaparHTML(formatearFecha(c.created_at))}</td>
             <td>
                 <div class="cliente">
-                    <strong>${c.nombre || "Sin nombre"}</strong>
-                    <span>${c.telefono || "Sin telefono"}</span>
+                    <strong>${escaparHTML(c.nombre_cliente || "Sin nombre")}</strong>
+                    <span>${escaparHTML(c.telefono || "Sin telefono")}</span>
                 </div>
             </td>
-            <td>${c.servicio || "Consulta general"}</td>
-            <td><span class="estado estado-${c.estado}">${obtenerEstadoLabel(c.estado)}</span></td>
+            <td>${escaparHTML(c.servicio || "Consulta general")}</td>
+            <td><span class="estado estado-${escaparHTML(c.estado)}">${obtenerEstadoLabel(c.estado)}</span></td>
         </tr>
     `).join("");
 }
@@ -135,15 +143,15 @@ function cargarActividadReciente(consultas, resumen) {
     const items = [
         {
             titulo: `${resumen.pendientes} consultas pendientes`,
-            detalle: "Prioridad operativa para el proximo seguimiento."
+            detalle: "Solicitudes que requieren seguimiento."
         },
         {
             titulo: `${resumen.respondidas} consultas respondidas`,
-            detalle: "Gestion registrable hasta migrar a base de datos."
+            detalle: "Mensajes marcados como gestionados."
         },
         {
-            titulo: ultima ? `Ultimo contacto: ${ultima.nombre}` : "Sin actividad nueva",
-            detalle: ultima ? `${ultima.servicio || "Consulta general"} - ${ultima.fecha || "sin fecha"}` : "Esperando nuevas consultas desde el sitio publico."
+            titulo: ultima ? `Ultimo contacto: ${ultima.nombre_cliente}` : "Sin actividad nueva",
+            detalle: ultima ? `${ultima.servicio || "Consulta general"} - ${formatearFecha(ultima.created_at)}` : "Esperando nuevas consultas desde el sitio publico."
         }
     ];
 
@@ -151,8 +159,8 @@ function cargarActividadReciente(consultas, resumen) {
         <div class="activity-item">
             <span class="activity-item__dot"></span>
             <div>
-                <strong>${item.titulo}</strong>
-                <span>${item.detalle}</span>
+                <strong>${escaparHTML(item.titulo)}</strong>
+                <span>${escaparHTML(item.detalle)}</span>
             </div>
         </div>
     `).join("");

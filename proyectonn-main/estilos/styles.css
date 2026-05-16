@@ -869,6 +869,21 @@ ul { list-style: none; }
     margin-top: 8px;
 }
 
+.form__status {
+    min-height: 22px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.form__status--success {
+    color: #047857;
+}
+
+.form__status--error {
+    color: #dc2626;
+}
+
 /* ---------- Contact info ---------- */
 .contacto__info {
     display: flex;
@@ -946,6 +961,22 @@ ul { list-style: none; }
 .contacto__social-link svg {
     width: 20px;
     height: 20px;
+}
+
+.contacto__social-link--whatsapp {
+    color: #25D366;
+}
+
+.contacto__social-link--instagram {
+    color: #E1306C;
+}
+
+.contacto__social-link--github {
+    color: #111827;
+}
+
+.contacto__social-link--email {
+    color: var(--color-primary);
 }
 
 /* ---------- Contact CTA breve ---------- */
