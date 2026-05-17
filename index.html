@@ -37,8 +37,7 @@
                     <li><a href="#nosotros" class="nav__link">Nosotros</a></li>
                     <li><a href="#proyectos" class="nav__link">Proyectos</a></li>
                     <li><a href="#contacto" class="nav__link">Contacto</a></li>
-                    <!-- Acceso temporal de desarrollo hasta implementar login real. -->
-                    <li><a href="admin/dashboard.html" class="nav__link">Admin</a></li>
+                    <li><a href="admin/login.html" class="nav__link">Admin</a></li>
                 </ul>
             </nav>
 
@@ -385,7 +384,7 @@
                     </div>
                     <div class="form__group">
                         <label for="telefono" class="form__label">Teléfono</label>
-                        <input type="tel" id="telefono" class="form__input" placeholder="Tu teléfono">
+                        <input type="tel" id="telefono" class="form__input" inputmode="numeric" minlength="8" maxlength="15" pattern="[0-9]{8,15}" placeholder="Tu teléfono" title="El teléfono debe tener entre 8 y 15 números">
                     </div>
                     <div class="form__group">
                         <label for="mensaje" class="form__label">Mensaje</label>
@@ -497,8 +496,7 @@
                         <li><a href="#nosotros">Nosotros</a></li>
                         <li><a href="#proyectos">Proyectos</a></li>
                         <li><a href="#contacto">Contacto</a></li>
-                        <!-- Acceso temporal de desarrollo hasta implementar login real. -->
-                        <li><a href="admin/dashboard.html">Admin</a></li>
+                        <li><a href="admin/login.html">Admin</a></li>
                     </ul>
                 </div>
 
@@ -520,7 +518,7 @@
                         <li><a href="https://wa.me/542646313348" class="footer__link">WhatsApp: 2646313348</a></li>
                         <li><a href="mailto:impulsodigital411@gmail.com" class="footer__link">impulsodigital411@gmail.com</a></li>
                         <li><a href="https://github.com/impulsodigital411" class="footer__link" target="_blank" rel="noopener">GitHub: impulsodigital411</a></li>
-                        <li><a href="admin/dashboard.html" class="footer__link">Admin: panel temporal</a></li>
+                        <li><a href="admin/login.html" class="footer__link">Admin: acceso privado</a></li>
                     </ul>
                 </div>
             </div>

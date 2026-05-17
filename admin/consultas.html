@@ -10,7 +10,7 @@
     <link rel="icon" href="../imagenes/logo/impulso-digital.png">
     <link rel="stylesheet" href="../css/admin.css">
 </head>
-<body>
+<body class="admin-protected">
     <div class="admin-layout">
         <aside class="sidebar">
             <div class="sidebar__header">
@@ -68,6 +68,7 @@
                     </div>
                     <div class="filters__info">Total visible: <strong id="totalConsultas">0</strong></div>
                 </section>
+                <p id="consultasFeedback" class="admin-feedback" aria-live="polite"></p>
 
                 <section class="section-block">
                     <div class="section-block__header">
@@ -97,8 +98,67 @@
         </main>
     </div>
 
+    <div class="consulta-modal" id="consultaModal" role="dialog" aria-modal="true" aria-labelledby="consultaModalTitulo" hidden>
+        <div class="consulta-modal__overlay" data-modal-close></div>
+        <section class="consulta-modal__card" aria-describedby="consultaModalMensaje">
+            <header class="consulta-modal__header">
+                <div>
+                    <span class="consulta-modal__eyebrow">Consulta recibida</span>
+                    <h2 id="consultaModalTitulo">Detalle de consulta</h2>
+                </div>
+                <button class="consulta-modal__close" id="consultaModalCerrar" type="button" aria-label="Cerrar detalle" data-modal-close>&times;</button>
+            </header>
+
+            <div class="consulta-modal__content">
+                <dl class="consulta-modal__grid">
+                    <div class="consulta-modal__item">
+                        <dt>Cliente</dt>
+                        <dd id="modalNombreCliente">-</dd>
+                    </div>
+                    <div class="consulta-modal__item">
+                        <dt>Teléfono</dt>
+                        <dd id="modalTelefono">-</dd>
+                    </div>
+                    <div class="consulta-modal__item">
+                        <dt>Email</dt>
+                        <dd id="modalEmail">-</dd>
+                    </div>
+                    <div class="consulta-modal__item">
+                        <dt>Servicio consultado</dt>
+                        <dd id="modalServicio">-</dd>
+                    </div>
+                    <div class="consulta-modal__item">
+                        <dt>Estado</dt>
+                        <dd id="modalEstado">-</dd>
+                    </div>
+                    <div class="consulta-modal__item">
+                        <dt>Fecha</dt>
+                        <dd id="modalFecha">-</dd>
+                    </div>
+                    <div class="consulta-modal__item">
+                        <dt>ID</dt>
+                        <dd id="modalConsultaId">-</dd>
+                    </div>
+                </dl>
+
+                <div class="consulta-modal__message-block">
+                    <h3>Mensaje completo</h3>
+                    <p class="consulta-modal__message" id="consultaModalMensaje">-</p>
+                </div>
+            </div>
+
+            <footer class="consulta-modal__actions">
+                <button class="admin-btn admin-btn--ghost" id="consultaModalCerrarSecundario" type="button" data-modal-close>Cerrar</button>
+                <button class="admin-btn admin-btn--danger" id="consultaModalEliminar" type="button">Eliminar consulta</button>
+                <button class="admin-btn" id="consultaModalResponder" type="button">Marcar como respondida</button>
+            </footer>
+        </section>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/supabase.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/admin-guard.js"></script>
     <script src="../js/consultas.js"></script>
 </body>
 </html>
