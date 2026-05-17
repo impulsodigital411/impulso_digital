@@ -100,19 +100,31 @@ document.addEventListener('DOMContentLoaded', () => {
     // FORMULARIO DE CONSULTA
     // ==========================================
     const form = document.getElementById('contactForm');
+    const telefonoInput = document.getElementById('telefono');
+    const telefonoRegex = /^[0-9]{8,15}$/;
+
+    telefonoInput?.addEventListener('input', () => {
+        telefonoInput.value = telefonoInput.value.replace(/\D/g, '').slice(0, 15);
+    });
 
     form?.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const nombre = document.getElementById('nombre')?.value.trim() || '';
         const email = document.getElementById('email')?.value.trim() || '';
-        const telefono = document.getElementById('telefono')?.value.trim() || '';
+        const telefono = telefonoInput?.value.trim() || '';
         const servicio = document.getElementById('servicio')?.value.trim() || '';
         const mensaje = document.getElementById('mensaje')?.value.trim() || '';
         const btn = form.querySelector('.form__btn');
 
         if (!nombre || !email || !mensaje) {
             mostrarEstadoFormulario('Completá nombre, email y mensaje antes de enviar.', 'error');
+            return;
+        }
+
+        if (telefono && !telefonoRegex.test(telefono)) {
+            mostrarEstadoFormulario('El teléfono debe tener entre 8 y 15 números.', 'error');
+            telefonoInput?.focus();
             return;
         }
 

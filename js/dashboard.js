@@ -1,8 +1,21 @@
-// TODO: Activar cuando esté listo el login real.
-// const session = localStorage.getItem("impulso_admin_session");
-// if (!session) {
-//     window.location.href = "login.html";
-// }
+const CONSULTAS_SELECT = "id,nombre_cliente,telefono,email,servicio_consultado,mensaje,estado,fecha_consulta";
+
+function obtenerSupabaseClient() {
+    if (typeof db === "undefined" || typeof db.from !== "function") {
+        throw new Error("No se pudo iniciar la conexión con Supabase. Revisá js/supabase.js.");
+    }
+
+    return db;
+}
+
+function normalizarEstado(estado) {
+    const valor = String(estado || "pendiente").trim().toLowerCase();
+
+    if (valor === "respondida" || valor === "respondido") return "respondido";
+    if (valor === "pendiente") return "pendiente";
+
+    return valor || "pendiente";
+}
 
 function obtenerEstadoLabel(estado) {
     const labels = {
@@ -10,21 +23,21 @@ function obtenerEstadoLabel(estado) {
         respondido: "Respondido"
     };
 
-    return labels[estado] || "Pendiente";
+    return labels[normalizarEstado(estado)] || "Pendiente";
 }
 
 function normalizarConsulta(consulta) {
-    const estado = consulta.estado === "respondida" ? "respondido" : (consulta.estado || "pendiente");
+    const servicioConsultado = consulta.servicio_consultado || "Consulta general";
 
     return {
         id: consulta.id,
-        nombre_cliente: consulta.nombre_cliente || consulta.nombre || "",
+        nombre_cliente: consulta.nombre_cliente || "",
         telefono: consulta.telefono || "",
         email: consulta.email || "",
-        servicio: consulta.servicio || consulta.servicio_consultado || "",
+        servicio_consultado: servicioConsultado,
         mensaje: consulta.mensaje || "",
-        estado,
-        created_at: consulta.created_at || consulta.fecha_consulta || ""
+        estado: normalizarEstado(consulta.estado),
+        fecha_consulta: consulta.fecha_consulta || ""
     };
 }
 
@@ -50,28 +63,39 @@ function formatearFecha(valor) {
 }
 
 async function obtenerConsultasDesdeSupabase() {
-    if (typeof db === "undefined") {
-        throw new Error("No se pudo iniciar la conexión con Supabase.");
-    }
-
-    const resultado = await db
+    const supabaseClient = obtenerSupabaseClient();
+    const { data, error } = await supabaseClient
         .from("consultas")
-        .select("*")
-        .order("created_at", { ascending: false });
+        .select(CONSULTAS_SELECT)
+        .order("fecha_consulta", { ascending: false, nullsFirst: false });
 
-    if (!resultado.error) return resultado.data || [];
+    if (error) throw error;
 
-    if (String(resultado.error.message || "").includes("created_at")) {
-        const fallback = await db
-            .from("consultas")
-            .select("*")
-            .order("fecha_consulta", { ascending: false });
+    return data || [];
+}
 
-        if (!fallback.error) return fallback.data || [];
-        throw fallback.error;
+function obtenerMensajeErrorCarga(error) {
+    const mensaje = String(error?.message || "").toLowerCase();
+
+    if (mensaje.includes("row-level security") || mensaje.includes("permission denied")) {
+        return "No se pudieron cargar las consultas. Revisá la policy SELECT de Supabase.";
     }
 
-    throw resultado.error;
+    if (mensaje.includes("column") || mensaje.includes("schema cache")) {
+        return "No se pudieron cargar las consultas. Revisá las columnas de public.consultas.";
+    }
+
+    return "No se pudieron cargar las consultas. Revisá la conexión con Supabase.";
+}
+
+function registrarErrorCargaConsultas(error) {
+    console.error("[Dashboard] Error al leer public.consultas desde Supabase", {
+        message: error?.message,
+        details: error?.details,
+        hint: error?.hint,
+        code: error?.code,
+        error
+    });
 }
 
 function calcularResumen(consultas) {
@@ -99,37 +123,37 @@ async function cargarDashboard() {
         cargarUltimasConsultas(consultas);
         cargarActividadReciente(consultas, resumen);
     } catch (error) {
-        console.error(error);
+        registrarErrorCargaConsultas(error);
         document.getElementById("totalConsultas").textContent = "0";
         document.getElementById("consultasPendientes").textContent = "0";
         document.getElementById("consultasRespondidas").textContent = "0";
         document.getElementById("ultimasConsultas").textContent = "0";
-        cargarUltimasConsultas([]);
+        cargarUltimasConsultas([], obtenerMensajeErrorCarga(error));
         cargarActividadReciente([], { pendientes: 0, respondidas: 0 });
     }
 }
 
-function cargarUltimasConsultas(consultas) {
+function cargarUltimasConsultas(consultas, mensajeVacio = "No hay consultas registradas") {
     const tbody = document.getElementById("tablaUltimasConsultasBody");
     if (!tbody) return;
 
     const ultimas = consultas.slice(0, 5);
 
     if (ultimas.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="4" class="table__empty">No hay consultas registradas</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="4" class="table__empty">${escaparHTML(mensajeVacio)}</td></tr>`;
         return;
     }
 
     tbody.innerHTML = ultimas.map(c => `
         <tr>
-            <td>${escaparHTML(formatearFecha(c.created_at))}</td>
+            <td>${escaparHTML(formatearFecha(c.fecha_consulta))}</td>
             <td>
                 <div class="cliente">
                     <strong>${escaparHTML(c.nombre_cliente || "Sin nombre")}</strong>
                     <span>${escaparHTML(c.telefono || "Sin telefono")}</span>
                 </div>
             </td>
-            <td>${escaparHTML(c.servicio || "Consulta general")}</td>
+            <td>${escaparHTML(c.servicio_consultado || "Consulta general")}</td>
             <td><span class="estado estado-${escaparHTML(c.estado)}">${obtenerEstadoLabel(c.estado)}</span></td>
         </tr>
     `).join("");
@@ -151,7 +175,7 @@ function cargarActividadReciente(consultas, resumen) {
         },
         {
             titulo: ultima ? `Ultimo contacto: ${ultima.nombre_cliente}` : "Sin actividad nueva",
-            detalle: ultima ? `${ultima.servicio || "Consulta general"} - ${formatearFecha(ultima.created_at)}` : "Esperando nuevas consultas desde el sitio publico."
+            detalle: ultima ? `${ultima.servicio_consultado || "Consulta general"} - ${formatearFecha(ultima.fecha_consulta)}` : "Esperando nuevas consultas desde el sitio publico."
         }
     ];
 
@@ -166,13 +190,11 @@ function cargarActividadReciente(consultas, resumen) {
     `).join("");
 }
 
-function cerrarSesion() {
-    // Temporal: no hay login real todavia. Se vuelve al sitio publico.
-    localStorage.removeItem("impulso_admin_session");
-    window.location.href = "../index.html";
-}
+document.addEventListener("DOMContentLoaded", async () => {
+    if (typeof window.ensureAdminSession === "function") {
+        const autorizado = await window.ensureAdminSession();
+        if (!autorizado) return;
+    }
 
-document.addEventListener("DOMContentLoaded", () => {
     cargarDashboard();
-    document.getElementById("btnCerrarSesion")?.addEventListener("click", cerrarSesion);
 });
