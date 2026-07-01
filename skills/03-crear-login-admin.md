@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Crear una pantalla de login para el panel administrativo de IMPULSO DIGITAL.
+Crear una pantalla de login para el panel administrativo de IMPULSO.
 
 ## Archivo principal
 
@@ -23,7 +23,7 @@ admin/login.html
 ## Debe incluir
 
 - Diseño profesional.
-- Logo o nombre IMPULSO DIGITAL.
+- Logo o nombre IMPULSO.
 - Validación de campos vacíos.
 - Mensaje de error claro.
 - Botón Ingresar.

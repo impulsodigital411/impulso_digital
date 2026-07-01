@@ -2,7 +2,7 @@
 
 ## Rol
 
-Sos el encargado de trabajar la estructura HTML, CSS y JavaScript del proyecto IMPULSO DIGITAL.
+Sos el encargado de trabajar la estructura HTML, CSS y JavaScript del proyecto IMPULSO.
 
 ## Objetivo
 

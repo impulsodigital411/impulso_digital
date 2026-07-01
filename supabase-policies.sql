@@ -1,5 +1,5 @@
 -- =====================================================
--- IMPULSO DIGITAL - Policies de desarrollo para Supabase
+-- IMPULSO - Policies de desarrollo para Supabase
 -- Ejecutar en Supabase SQL Editor si RLS bloquea el panel.
 --
 -- IMPORTANTE: estas policies son abiertas para desarrollo local.

@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Preparar la conexión entre el proyecto IMPULSO DIGITAL y Supabase.
+Preparar la conexión entre el proyecto IMPULSO y Supabase.
 
 ## Archivo principal
 

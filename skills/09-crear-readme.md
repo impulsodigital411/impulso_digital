@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Crear o actualizar README.md del proyecto IMPULSO DIGITAL.
+Crear o actualizar README.md del proyecto IMPULSO.
 
 ## Debe explicar
 

@@ -1,5 +1,5 @@
 -- =====================================================
--- IMPULSO DIGITAL - Login propio para panel admin
+-- IMPULSO - Login propio para panel admin
 -- Compatible con Supabase / PostgreSQL
 --
 -- IMPORTANTE: este script recrea public.usuarios_admin.

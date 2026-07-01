@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Ordenar el proyecto IMPULSO DIGITAL con una estructura clara y mantenible.
+Ordenar el proyecto IMPULSO con una estructura clara y mantenible.
 
 ## Instrucción
 

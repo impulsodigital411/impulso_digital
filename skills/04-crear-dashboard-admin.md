@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Crear el dashboard administrativo de IMPULSO DIGITAL.
+Crear el dashboard administrativo de IMPULSO.
 
 ## Archivo principal
 
@@ -12,7 +12,7 @@ admin/dashboard.html
 
 - Sidebar lateral.
 - Header superior.
-- Nombre: Panel Administrativo IMPULSO DIGITAL.
+- Nombre: Panel Administrativo IMPULSO.
 - Cards de resumen.
 - Menú lateral.
 

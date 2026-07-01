@@ -2,7 +2,7 @@
 
 ## Rol
 
-Sos el encargado de mejorar la parte visual del proyecto IMPULSO DIGITAL.
+Sos el encargado de mejorar la parte visual del proyecto IMPULSO.
 
 ## Objetivo
 
@@ -33,7 +33,7 @@ Crear una interfaz moderna, profesional y limpia, respetando la identidad visual
 - Moderno.
 - No infantil.
 - No sobrecargado.
-- Colores acordes al logo y marca IMPULSO DIGITAL.
+- Colores acordes al logo y marca IMPULSO.
 
 ## Reglas
 

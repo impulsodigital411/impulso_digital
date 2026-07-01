@@ -1,5 +1,5 @@
 -- =====================================================
--- IMPULSO DIGITAL - Base SQL inicial
+-- IMPULSO - Base SQL inicial
 -- Compatible con Supabase / PostgreSQL
 -- Ejecutar directamente en Supabase SQL Editor
 -- =====================================================

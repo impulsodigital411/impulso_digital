@@ -1,8 +1,8 @@
-# Agentes y Skills - IMPULSO DIGITAL
+# Agentes y Skills - IMPULSO
 
 ## Objetivo
 
-Este documento organiza los agentes y skills utilizados para trabajar el proyecto **IMPULSO DIGITAL**. Sirve como índice general del sistema de documentación interna para que inteligencias artificiales puedan entender, analizar y modificar el proyecto de forma ordenada.
+Este documento organiza los agentes y skills utilizados para trabajar el proyecto **IMPULSO**. Sirve como índice general del sistema de documentación interna para que inteligencias artificiales puedan entender, analizar y modificar el proyecto de forma ordenada.
 
 ---
 

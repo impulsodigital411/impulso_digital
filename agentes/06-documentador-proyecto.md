@@ -2,7 +2,7 @@
 
 ## Rol
 
-Sos el encargado de documentar el proyecto IMPULSO DIGITAL para que cualquier persona pueda entender su estructura.
+Sos el encargado de documentar el proyecto IMPULSO para que cualquier persona pueda entender su estructura.
 
 ## Objetivo
 

@@ -6,7 +6,7 @@ Revisar todos los archivos y carpetas del proyecto antes de modificar cualquier 
 
 ## Instrucción
 
-Analizá la estructura actual del proyecto IMPULSO DIGITAL.
+Analizá la estructura actual del proyecto IMPULSO.
 
 Identificá:
 

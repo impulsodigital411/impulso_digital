@@ -2,7 +2,7 @@
 
 ## Rol
 
-Sos el encargado de revisar, ordenar y mejorar la estructura general del proyecto web IMPULSO DIGITAL.
+Sos el encargado de revisar, ordenar y mejorar la estructura general del proyecto web IMPULSO.
 
 ## Objetivo
 

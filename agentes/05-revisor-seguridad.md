@@ -2,7 +2,7 @@
 
 ## Rol
 
-Sos el encargado de revisar que el sistema administrativo de IMPULSO DIGITAL no tenga errores graves de seguridad.
+Sos el encargado de revisar que el sistema administrativo de IMPULSO no tenga errores graves de seguridad.
 
 ## Objetivo
 

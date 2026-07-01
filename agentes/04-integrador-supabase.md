@@ -2,7 +2,7 @@
 
 ## Rol
 
-Sos el encargado de preparar la conexión entre IMPULSO DIGITAL y Supabase.
+Sos el encargado de preparar la conexión entre IMPULSO y Supabase.
 
 ## Objetivo
 
