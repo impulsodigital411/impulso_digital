@@ -1,0 +1,25 @@
+<svg width="240" height="64" viewBox="0 0 240 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Impulso</title>
+  <desc id="desc">Logotipo de Impulso.</desc>
+  <defs>
+    <linearGradient id="blue" x1="8" y1="10" x2="56" y2="54" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8"/>
+      <stop offset="0.52" stop-color="#1D4ED8"/>
+      <stop offset="1" stop-color="#0B1B3F"/>
+    </linearGradient>
+    <filter id="soft" x="-10" y="-10" width="80" height="80" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#1D4ED8" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+  <g filter="url(#soft)">
+    <circle cx="32" cy="32" r="26" fill="#FFFFFF" stroke="#1D4ED8" stroke-width="2.5"/>
+    <path d="M15 43c8.5 0 15.7-3.2 21.5-9.6L48 20" stroke="url(#blue)" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M39.2 20H48v8.8" stroke="#1D4ED8" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M18 42V31M26 39V26M34 34V20" stroke="#0B1B3F" stroke-width="4.6" stroke-linecap="round"/>
+    <path d="M43 18h5.5M43.5 25.5h8M38.5 14.5h4.5" stroke="#38BDF8" stroke-width="1.9" stroke-linecap="round"/>
+    <circle cx="50.5" cy="25.5" r="2" fill="#1D4ED8"/>
+    <circle cx="44" cy="14.5" r="2" fill="#1D4ED8"/>
+    <circle cx="50" cy="18" r="2" fill="#1D4ED8"/>
+  </g>
+  <text x="72" y="31" fill="#071533" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="900" letter-spacing="0.8">IMPULSO</text>
+</svg>

@@ -1,0 +1,14 @@
+Cambios realizados en la página principal de Impulso
+
+- Se mantuvo el sitio como una sola página estática: HTML, CSS y JavaScript.
+- No se agregó base de datos ni dependencias externas nuevas.
+- Se reemplazó la marca por Impulso y se incorporó un logo consistente para header, footer y favicon.
+- Se mantuvo el header, footer, formulario de contacto y widget flotante de WhatsApp.
+- El formulario permite elegir a cuál de los dos WhatsApp enviar la consulta.
+- El widget flotante de WhatsApp muestra los dos números.
+- Se agregó una sección de Proyectos con imágenes agrupadas por rubro:
+  Inmobiliaria, Salud y turnos, Gastronomía / Viandas, Distribución / Stock y Fitness / Gimnasios.
+- Los proyectos se muestran en carruseles horizontales responsive y se pueden ampliar al hacer clic.
+- Se reformuló la información de Servicios, Nosotros, Misión, Visión, Valores y Metodología.
+- No se utilizaron emojis en el sitio web; se usaron iconos SVG profesionales.
+- Se mejoró el fondo general con tonos blanco, azul y crema suave para dar identidad sin sobrecargar el diseño.
