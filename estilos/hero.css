@@ -175,6 +175,7 @@ html:is(
   place-items: center;
   width: min(100%, 555px);
   justify-self: center;
+  container-type: inline-size;
 }
 .halo {
   position: absolute;
@@ -259,11 +260,14 @@ html:is(
   width: clamp(4px, 0.6vw, 7px);
 }
 
-/* The two printed faces keep the artwork legible through a full rotation. */
+/* The stage supplies perspective. The carrier offsets the press depth so the
+   front face keeps its original apparent size at rest. */
 .logo-float {
   width: 54%;
   aspect-ratio: 1;
   position: relative;
+  --logo-half-depth: clamp(3.5px, 1.85cqw, 10px);
+  transform: translateZ(calc(-1 * var(--logo-half-depth)));
   transform-style: preserve-3d;
 }
 .logo-core {
@@ -271,16 +275,63 @@ html:is(
   inset: 0;
   transform-style: preserve-3d;
 }
-.logo-core img {
+/* Cull the whole face, including its texture and shadow. No logo is painted
+   between the two outward-facing textures. */
+.logo-face {
   position: absolute;
   inset: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.logo-face--front {
+  transform: translateZ(var(--logo-half-depth));
+}
+.logo-face--back {
+  transform: rotateY(180deg) translateZ(var(--logo-half-depth));
+}
+.logo-face img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  backface-visibility: hidden;
+  filter: drop-shadow(0 4px 6px #081f3a80);
 }
-.logo-core img.back {
-  transform: rotateY(180deg);
+
+/* Side faces run along Z instead of stacking image planes at the silhouette.
+   The 32 tangents follow the metallic rim without filling its transparent gaps. */
+.logo-edge {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+.logo-edge i {
+  --angle: calc(var(--facet) * 11.25deg);
+  --edge-finish: linear-gradient(
+    180deg,
+    #197caf 0%,
+    #0a385f 12%,
+    #061a31 29%,
+    #123e63 49%,
+    #091d34 68%,
+    #104772 88%,
+    #1a8abd 100%
+  );
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4.9cqw;
+  height: calc(2 * var(--logo-half-depth));
+  transform: translate(-50%, -50%) rotateZ(var(--angle)) translateY(-24.55cqw)
+    rotateX(90deg);
+  backface-visibility: hidden;
+  background-image: var(--edge-finish);
+}
+@supports (opacity: calc(cos(0deg))) and (color: color-mix(in srgb, blue, transparent)) {
+  .logo-edge i {
+    --reflection: calc(15% + 14% * cos(var(--angle) - 24deg));
+    --edge-glint: color-mix(in srgb, #40baf1 var(--reflection), transparent);
+    background-image:
+      linear-gradient(var(--edge-glint), var(--edge-glint)), var(--edge-finish);
+  }
 }
 
 .hero-controls {
