@@ -1,0 +1,230 @@
+.motion-toggle {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #ad785f;
+  border-radius: 50%;
+  background: #2b2025;
+  color: #f2b38d;
+  transition:
+    background-color 200ms,
+    border-color 200ms;
+}
+.motion-toggle:hover {
+  background: #56333b;
+  border-color: #eab28c;
+}
+.motion-toggle svg {
+  width: 20px;
+}
+.motion-toggle:not([data-paused="true"]) .play-icon,
+.motion-toggle[data-paused="true"] .pause-icon {
+  display: none;
+}
+
+/* Both halves use the same rotor timing; only the near half is above the mark. */
+.orbit-far {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(-24px -24px 50%);
+}
+.orbit-near {
+  z-index: 1;
+  clip-path: inset(50% -24px -24px);
+}
+.orbit-far .orbit-ring,
+.orbit-near .orbit-ring {
+  border-color: transparent;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo-stage {
+    transform: perspective(900px) translate(var(--mx, 0px), var(--my, 0px))
+      rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+    transition: transform 380ms cubic-bezier(0.16, 0.68, 0.32, 1);
+  }
+  .ribbon-art {
+    transform: translateY(var(--scroll-drift, 0px));
+  }
+  .ribbon-motion {
+    transform-origin: center;
+    animation: ribbon-flow 9s ease-in-out -2s infinite alternate;
+  }
+  .ribbon-crest {
+    transform-origin: center;
+    animation: crest-flow 6s ease-in-out -0.7s infinite alternate;
+  }
+  .hero-aura {
+    animation: aura-flow 8s ease-in-out -2s infinite alternate;
+  }
+  .halo {
+    animation: breathe 4.5s ease-in-out -0.6s infinite alternate;
+  }
+  .logo-core {
+    animation: impulsoRotation 5s linear infinite;
+  }
+  .orbit-ring.r1 {
+    animation: orbit 5.5s linear -0.65s infinite;
+  }
+  .orbit-ring.r2:not(.orbit-guide) {
+    animation: orbit 8s linear -1.4s infinite reverse;
+  }
+  .orbit-ring.r3 {
+    animation: orbit 6.8s linear -2.55s infinite;
+  }
+  .scroll-glyph i {
+    animation: scroll-signal 1.6s ease-in-out infinite;
+  }
+
+  /* The CSS starts independently of JS. Observers can only pause, not gate startup. */
+  :is(.tab-hidden, .motion-off) .hero
+    :is(.ribbon-motion, .ribbon-crest, .hero-aura, .halo, .logo-core, .orbit-ring, .scroll-glyph i),
+  .ribbons-offscreen :is(.ribbon-motion, .ribbon-crest, .hero-aura),
+  .orbits-offscreen :is(.halo, .logo-core, .orbit-ring),
+  .cue-offscreen .scroll-glyph i {
+    animation-play-state: paused;
+  }
+
+  .reveal.arrive:not(.hero-copy, .split-head):not(:focus-within),
+  .hero-copy.arrive:not(:focus-within) :is(.eyebrow, h1 > *, .lead, .actions),
+  .split-head.arrive :is(.kicker, h2, .intro) {
+    animation: entrance 750ms cubic-bezier(0.2, 0.71, 0.25, 1)
+      var(--stagger, 0ms) backwards;
+  }
+  .hero-copy h1 > :nth-child(1),
+  .split-head h2 {
+    --stagger: 65ms;
+  }
+  .hero-copy h1 > :nth-child(2),
+  .split-head .intro {
+    --stagger: 135ms;
+  }
+  .hero-copy h1 > :nth-child(3) {
+    --stagger: 215ms;
+  }
+  .hero-copy .lead {
+    --stagger: 310ms;
+  }
+  .hero-copy .actions {
+    --stagger: 390ms;
+  }
+  :is(.service-card, .step, .catalog-item):nth-child(2) {
+    --stagger: 85ms;
+  }
+  :is(.service-card, .step, .catalog-item):nth-child(3) {
+    --stagger: 170ms;
+  }
+  :is(.step, .catalog-item):nth-child(4) {
+    --stagger: 230ms;
+  }
+  .catalog-item:nth-child(5) {
+    --stagger: 275ms;
+  }
+  .motion-off .arrive,
+  .motion-off .arrive *,
+  .tab-hidden .arrive,
+  .tab-hidden .arrive * {
+    animation: none !important;
+  }
+}
+
+@keyframes entrance {
+  from {
+    opacity: 0.12;
+    transform: translateY(27px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes impulsoRotation {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes ribbon-flow {
+  from {
+    transform: translate(-22px, 15px) scale(1.05);
+  }
+  to {
+    transform: translate(39px, -42px) scale(1.12);
+  }
+}
+@keyframes crest-flow {
+  from {
+    opacity: 0.19;
+    transform: translate(-22px, 17px) scale(1.04);
+  }
+  to {
+    opacity: 0.98;
+    transform: translate(43px, -48px) scale(1.11);
+  }
+}
+@keyframes aura-flow {
+  from {
+    opacity: 0.48;
+    transform: translate(-5%, 5%) scale(0.97);
+  }
+  to {
+    opacity: 0.99;
+    transform: translate(3%, -6%) scale(1.14);
+  }
+}
+@keyframes breathe {
+  from {
+    opacity: 0.54;
+    transform: translate(var(--halo-x, 0px), var(--halo-y, 0px)) scale(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: translate(var(--halo-x, 0px), var(--halo-y, 0px)) scale(1.13);
+  }
+}
+@keyframes scroll-signal {
+  0%,
+  19% {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.motion-off {
+  scroll-behavior: auto;
+}
+.motion-off .logo-stage {
+  transition: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+  .hero .button,
+  .hero .button > [aria-hidden],
+  .button,
+  .textlink,
+  .textlink::after,
+  .whatsapp {
+    transform: none !important;
+  }
+}

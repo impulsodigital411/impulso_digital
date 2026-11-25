@@ -1,0 +1,416 @@
+.hero {
+  max-width: none;
+  min-height: calc(100svh - var(--nav-h));
+  padding: clamp(28px, 5.4vw, 80px) max(6vw, calc((100vw - 1260px) / 2)) 20px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  grid-template-rows: 1fr auto;
+  align-items: center;
+  gap: clamp(10px, 2vw, 36px);
+  overflow: hidden;
+  isolation: isolate;
+  background: radial-gradient(
+    ellipse at 77% 47%,
+    #573037 0%,
+    #2b2127 43%,
+    #191719 74%
+  );
+}
+.hero::after,
+.hero-grid,
+.hero-aura,
+.ribbon-art {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.hero::after {
+  content: "";
+  z-index: -1;
+  background:
+    linear-gradient(
+      90deg,
+      #181619eb,
+      #1a171bbe 32%,
+      #1b171b2c 62%,
+      transparent
+    ),
+    linear-gradient(0deg, #171719 0%, transparent 24%);
+}
+.hero-grid {
+  z-index: -4;
+  opacity: 0.24;
+  background:
+    linear-gradient(#e7aa8a42 1px, transparent 1px),
+    linear-gradient(90deg, #e7aa8a42 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(ellipse at 78% 48%, black, transparent 67%);
+}
+.hero-aura {
+  z-index: -3;
+  background:
+    radial-gradient(ellipse at 78% 51%, #974d595e, transparent 43%),
+    radial-gradient(ellipse at 86% 34%, #d3834b48, transparent 33%);
+}
+.ribbon-art {
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+}
+.ribbon-crest {
+  opacity: 0.73;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  padding: 7px 12px;
+  border: 1px solid #8d5b4b;
+  border-radius: 50px;
+  background: #52303441;
+  color: #f0af85;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.eyebrow i {
+  width: 7px;
+  height: 7px;
+  flex: none;
+  border-radius: 50%;
+  background: #f3b17c;
+  box-shadow: 0 0 12px #e39b69b3;
+}
+.hero h1 {
+  margin: 22px 0 23px;
+  color: #f9eee6;
+  font-size: clamp(40px, 6.25vw, 100px);
+  font-weight: 740;
+  letter-spacing: -0.069em;
+  line-height: 0.99;
+}
+.hero h1 > * {
+  display: block;
+}
+.hero h1 em {
+  color: #f3ab7d;
+  font-style: normal;
+}
+html:is(
+    [lang="de"],
+    [lang="fr"],
+    [lang="ru"],
+    [lang="zh-Hans"],
+    [lang="ja"],
+    [lang="ko"]
+  )
+  .hero
+  h1 {
+  font-size: clamp(29px, 5.25vw, 85px);
+}
+.hero .lead {
+  color: #dbc7bd;
+  max-width: 34rem;
+  font-size: clamp(16px, 1.35vw, 21px);
+  line-height: 1.52;
+}
+.hero .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+.hero .button {
+  position: relative;
+  isolation: isolate;
+  border-radius: 9px;
+  transition:
+    transform 230ms,
+    box-shadow 250ms,
+    border-color 250ms,
+    background-color 250ms;
+}
+.hero .button > [aria-hidden] {
+  transition: transform 230ms;
+}
+.hero .primary {
+  background: linear-gradient(112deg, #efb387, #df8e65);
+  border-color: #f2b183;
+  box-shadow:
+    0 8px 28px #d17e5040,
+    inset 0 1px #ffdcc076;
+}
+.hero .primary:hover,
+.hero .primary:focus-visible {
+  box-shadow:
+    0 10px 35px #e99b6e66,
+    inset 0 0 24px #ffdcc05c;
+  border-color: #ffd1ab;
+}
+.hero .secondary {
+  background: #271d22e6;
+  border-color: #8e6157;
+}
+.hero .secondary:hover,
+.hero .secondary:focus-visible {
+  background-color: #4c2d33;
+  border-color: #c48b72;
+}
+.hero .button:is(:hover, :focus-visible) > [aria-hidden] {
+  transform: translate(3px, -3px);
+}
+.hero .button.secondary:is(:hover, :focus-visible) > [aria-hidden] {
+  transform: translate(3px, 3px);
+}
+.hero .button:active {
+  transform: scale(0.97);
+}
+
+.hero-visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(100%, 555px);
+  justify-self: center;
+}
+.halo {
+  position: absolute;
+  inset: -9%;
+  background: radial-gradient(
+    circle,
+    #efa06743,
+    #c06e5240 20%,
+    #97415e20 38%,
+    transparent 64%
+  );
+  pointer-events: none;
+}
+.logo-stage {
+  position: relative;
+  display: grid;
+  width: 100%;
+  aspect-ratio: 1;
+  place-items: center;
+  perspective: 850px;
+  pointer-events: none;
+}
+.instrument {
+  position: absolute;
+  inset: 2%;
+  width: 96%;
+  color: #e8ac8891;
+}
+
+/* The outer plane defines the ellipse; its inner rotor carries the individual particles. */
+.orbit-plane {
+  position: absolute;
+  inset: 3%;
+  transform: rotate(-32deg) scaleY(0.59);
+}
+.plane-2 {
+  inset: 9%;
+  transform: rotate(35deg) scaleY(0.54);
+}
+.plane-3 {
+  inset: 15%;
+  transform: rotate(-75deg) scaleY(0.73);
+}
+.orbit-ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid #e6a579a6;
+  border-radius: 50%;
+  --spark: #ffd0a3;
+  --tail: #ec8e55;
+}
+.orbit-ring.r2 {
+  border-color: #cf7d8495;
+  --spark: #f0a9a7;
+  --tail: #da7c86;
+}
+.orbit-ring.r3 {
+  border-color: #d290653f;
+  --spark: #edb68c;
+  --tail: #b97859;
+}
+.orbit-ring i {
+  position: absolute;
+  width: clamp(6px, 1.05vw, 12px);
+  aspect-ratio: 1;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) scaleY(1.45);
+  border-radius: 50%;
+  background: var(--spark);
+  box-shadow:
+    0 0 8px 2px var(--tail),
+    0 0 22px var(--tail);
+}
+.orbit-ring i:nth-child(2) {
+  top: 100%;
+  width: clamp(4px, 0.68vw, 7px);
+}
+.orbit-ring i:nth-child(3) {
+  top: 50%;
+  left: 100%;
+  width: clamp(4px, 0.6vw, 7px);
+}
+
+/* The two printed faces keep the artwork legible through a full rotation. */
+.logo-float {
+  width: 54%;
+  aspect-ratio: 1;
+  position: relative;
+  transform-style: preserve-3d;
+}
+.logo-core {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+.logo-core img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  backface-visibility: hidden;
+}
+.logo-core img.back {
+  transform: rotateY(180deg);
+}
+
+.hero-controls {
+  grid-column: 1 / -1;
+  width: 100%;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid #d3916a4d;
+  padding-top: 12px;
+}
+.scroll-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding-right: 8px;
+  color: #e5b397;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.scroll-cue:hover {
+  color: #ffe0c4;
+}
+.scroll-glyph {
+  display: grid;
+  place-items: start center;
+  width: 21px;
+  height: 31px;
+  padding-top: 6px;
+  border: 1px solid #cc956e;
+  border-radius: 16px;
+}
+.scroll-glyph i {
+  width: 3px;
+  height: 6px;
+  border-radius: 4px;
+  background: #ffb888;
+}
+
+@media (max-width: 1280px) {
+  .hero-controls {
+    padding-right: max(0px, calc(84px - 6vw));
+  }
+}
+@media (max-width: 970px) {
+  .hero {
+    padding-inline: 5vw;
+  }
+  .hero-controls {
+    padding-right: max(0px, calc(84px - 5vw));
+  }
+}
+@media (max-width: 680px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    align-content: center;
+    padding: 23px 20px 12px;
+    gap: 7px;
+    background: radial-gradient(
+      ellipse at 57% 65%,
+      #543038 0%,
+      #2d2228 45%,
+      #191719 78%
+    );
+  }
+  .hero::after {
+    background: linear-gradient(
+      180deg,
+      #181619d5 0%,
+      #21191eb0 36%,
+      transparent 69%,
+      #171719c4
+    );
+  }
+  .hero-grid {
+    mask-image: radial-gradient(ellipse at 56% 67%, black, transparent 66%);
+  }
+  .eyebrow {
+    font-size: 10px;
+    padding-block: 5px;
+  }
+  .hero h1 {
+    font-size: clamp(34px, 10.15vw, 59px);
+    margin: 14px 0 12px;
+  }
+  html:is(
+      [lang="de"],
+      [lang="fr"],
+      [lang="ru"],
+      [lang="zh-Hans"],
+      [lang="ja"],
+      [lang="ko"]
+    )
+    .hero
+    h1 {
+    font-size: clamp(30px, 8.9vw, 54px);
+  }
+  .hero .lead {
+    font-size: 15px;
+    line-height: 1.43;
+  }
+  .hero .actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    margin-top: 15px;
+    gap: 8px;
+  }
+  .hero .button {
+    min-height: 46px;
+    padding: 8px 10px;
+    gap: 6px;
+    line-height: 1.28;
+  }
+  .hero-visual {
+    width: min(74vw, 330px);
+  }
+  .hero-controls {
+    padding-top: 6px;
+    padding-right: 51px;
+    min-height: auto;
+  }
+}
+@media (max-width: 680px) and (max-height: 660px) {
+  .hero-visual {
+    width: min(65vw, 242px);
+  }
+}

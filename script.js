@@ -1,216 +1,152 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.getElementById('hamburger');
-    const nav = document.getElementById('nav');
-    const header = document.getElementById('header');
-    const form = document.getElementById('contactForm');
-    const telefonoInput = document.getElementById('telefono');
-    const formStatus = document.getElementById('contactFormStatus');
-    const whatsappWidget = document.getElementById('whatsappWidget');
-    const whatsappButton = document.getElementById('whatsappButton');
-    const whatsappPanel = document.getElementById('whatsappPanel');
-    const destinoWhatsapp = document.getElementById('destinoWhatsapp');
-    const lightbox = document.getElementById('projectLightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const lightboxTitle = document.getElementById('lightboxTitle');
-    const lightboxClose = document.querySelector('.lightbox__close');
+import { translations } from "./translations.js";
+import { initContact } from "./contact.js";
+import { initCatalog } from "./catalog.js";
 
-    const whatsappPrincipal = '542646313348';
+const root = document.documentElement;
+const selector = document.getElementById("language");
+const storageKey = "impulso.lang";
+let lang = "es";
+const tr = (key) => translations[lang][key] ?? translations.es[key];
+const title = document.querySelector('meta[property="og:title"]');
+const descriptions = document.querySelectorAll(
+  'meta[name="description"], meta[property="og:description"]',
+);
+const locale = document.querySelector('meta[property="og:locale"]');
+const locales = {
+  es: "es_AR",
+  en: "en_US",
+  de: "de_DE",
+  fr: "fr_FR",
+  ru: "ru_RU",
+  zh: "zh_CN",
+  ja: "ja_JP",
+  ko: "ko_KR",
+};
 
-    function cerrarMenu() {
-        hamburger?.classList.remove('active');
-        nav?.classList.remove('active');
-        hamburger?.setAttribute('aria-expanded', 'false');
-        document.body.classList.remove('no-scroll');
-    }
+const contact = initContact(tr);
+const updateCatalog = initCatalog(contact.prefill);
+let motion;
 
-    hamburger?.addEventListener('click', () => {
-        const isOpen = hamburger.classList.toggle('active');
-        nav?.classList.toggle('active', isOpen);
-        hamburger.setAttribute('aria-expanded', String(isOpen));
-        document.body.classList.toggle('no-scroll', isOpen);
-    });
+function setLanguage(value) {
+  lang = Object.hasOwn(translations, value) ? value : "es";
+  root.lang = lang === "zh" ? "zh-Hans" : lang;
+  selector.value = lang;
+  for (const element of document.querySelectorAll("[data-i]")) {
+    element.textContent = tr(element.dataset.i);
+  }
+  for (const element of document.querySelectorAll("[data-i-label]")) {
+    element.setAttribute("aria-label", tr(element.dataset.iLabel));
+  }
+  for (const element of document.querySelectorAll("[data-i-title]")) {
+    element.title = tr(element.dataset.iTitle);
+  }
+  document.title = `Impulso | ${tr("metaTitle")}`;
+  title.content = document.title;
+  for (const description of descriptions) description.content = tr("heroText");
+  locale.content = locales[lang];
+  contact.translate();
+  updateCatalog(lang);
+  motion?.translate();
+}
 
-    document.querySelectorAll('.nav__link').forEach(link => {
-        link.addEventListener('click', cerrarMenu);
-    });
-
-    document.addEventListener('click', (event) => {
-        if (!nav || !hamburger) return;
-        const clickOutsideMenu = !nav.contains(event.target) && !hamburger.contains(event.target);
-        if (nav.classList.contains('active') && clickOutsideMenu) cerrarMenu();
-    });
-
-    window.addEventListener('scroll', () => {
-        header?.classList.toggle('header--scrolled', window.scrollY > 20);
-    });
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', (event) => {
-            const href = anchor.getAttribute('href');
-            if (!href || href === '#') return;
-            const target = document.querySelector(href);
-            if (!target) return;
-            event.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-    });
-
-    const fadeElements = document.querySelectorAll('.fade-in');
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-        fadeElements.forEach(element => observer.observe(element));
-    } else {
-        fadeElements.forEach(element => element.classList.add('visible'));
-    }
-
-    telefonoInput?.addEventListener('input', () => {
-        telefonoInput.value = telefonoInput.value.replace(/\D/g, '').slice(0, 15);
-    });
-
-    function mostrarEstado(mensaje, tipo) {
-        if (!formStatus) return;
-        formStatus.textContent = mensaje;
-        formStatus.className = 'form__status';
-        if (tipo) formStatus.classList.add(`form__status--${tipo}`);
-    }
-
-    function crearMensajeWhatsApp({ nombre, email, telefono, servicio, mensaje }) {
-        const lineas = [
-            'Hola, quiero consultar por Impulso.',
-            '',
-            `Nombre: ${nombre}`,
-            email ? `Email: ${email}` : '',
-            telefono ? `Teléfono: ${telefono}` : '',
-            servicio ? `Servicio de interés: ${servicio}` : '',
-            '',
-            `Mensaje: ${mensaje}`
-        ].filter(Boolean);
-
-        return encodeURIComponent(lineas.join('\n'));
-    }
-
-    form?.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        const nombre = document.getElementById('nombre')?.value.trim() || '';
-        const email = document.getElementById('email')?.value.trim() || '';
-        const telefono = telefonoInput?.value.trim() || '';
-        const servicio = document.getElementById('servicio')?.value.trim() || '';
-        const mensaje = document.getElementById('mensaje')?.value.trim() || '';
-        const numeroDestino = destinoWhatsapp?.value || whatsappPrincipal;
-        const emailValido = !email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        const telefonoValido = !telefono || /^[0-9]{8,15}$/.test(telefono);
-
-        if (!nombre || !mensaje) {
-            mostrarEstado('Completá tu nombre y el mensaje para poder enviarlo.', 'error');
-            return;
-        }
-
-        if (!email && !telefono) {
-            mostrarEstado('Dejá un email o teléfono para poder responderte.', 'error');
-            return;
-        }
-
-        if (!emailValido) {
-            mostrarEstado('Revisá el formato del correo electrónico.', 'error');
-            return;
-        }
-
-        if (!telefonoValido) {
-            mostrarEstado('El teléfono debe tener entre 8 y 15 números.', 'error');
-            telefonoInput?.focus();
-            return;
-        }
-
-        const texto = crearMensajeWhatsApp({ nombre, email, telefono, servicio, mensaje });
-        window.open(`https://wa.me/${numeroDestino}?text=${texto}`, '_blank', 'noopener,noreferrer');
-        mostrarEstado('Se abrió WhatsApp con tu consulta lista para enviar.', 'success');
-        form.reset();
-    });
-
-    function setWhatsappOpen(isOpen) {
-        whatsappWidget?.classList.toggle('is-open', isOpen);
-        whatsappButton?.setAttribute('aria-expanded', String(isOpen));
-        whatsappPanel?.setAttribute('aria-hidden', String(!isOpen));
-    }
-
-    whatsappButton?.addEventListener('click', () => {
-        setWhatsappOpen(!whatsappWidget?.classList.contains('is-open'));
-    });
-
-    document.addEventListener('click', (event) => {
-        if (!whatsappWidget || whatsappWidget.contains(event.target)) return;
-        setWhatsappOpen(false);
-    });
-
-    document.querySelectorAll('[data-project-row]').forEach(row => {
-        const slider = row.querySelector('.project-slider');
-        const prev = row.querySelector('.gallery-btn--prev');
-        const next = row.querySelector('.gallery-btn--next');
-        if (!slider) return;
-
-        const mover = (direccion) => {
-            const distancia = Math.max(280, Math.floor(slider.clientWidth * 0.75));
-            slider.scrollBy({ left: direccion * distancia, behavior: 'smooth' });
-        };
-
-        prev?.addEventListener('click', () => mover(-1));
-        next?.addEventListener('click', () => mover(1));
-    });
-
-    document.querySelectorAll('.project-consult').forEach(link => {
-        link.addEventListener('click', () => {
-            const proyecto = link.dataset.project || 'un proyecto digital';
-            const servicio = document.getElementById('servicio');
-            const mensaje = document.getElementById('mensaje');
-            if (servicio) servicio.value = proyecto.includes('stock') ? 'Sistema de stock e inventario' : 'Sistema web a medida';
-            if (mensaje && !mensaje.value.trim()) {
-                mensaje.value = `Hola, me interesa consultar por ${proyecto}. Quisiera saber cómo se podría adaptar a mi negocio.`;
-            }
-        });
-    });
-
-    function abrirLightbox(src, title) {
-        if (!lightbox || !lightboxImage || !lightboxTitle) return;
-        lightboxImage.src = src;
-        lightboxImage.alt = title || 'Vista ampliada del proyecto';
-        lightboxTitle.textContent = title || '';
-        lightbox.classList.add('is-open');
-        lightbox.setAttribute('aria-hidden', 'false');
-        document.body.classList.add('no-scroll');
-    }
-
-    function cerrarLightbox() {
-        if (!lightbox || !lightboxImage) return;
-        lightbox.classList.remove('is-open');
-        lightbox.setAttribute('aria-hidden', 'true');
-        lightboxImage.src = '';
-        document.body.classList.remove('no-scroll');
-    }
-
-    document.querySelectorAll('[data-lightbox]').forEach(button => {
-        button.addEventListener('click', () => {
-            abrirLightbox(button.dataset.lightbox, button.dataset.title);
-        });
-    });
-
-    lightboxClose?.addEventListener('click', cerrarLightbox);
-    lightbox?.addEventListener('click', (event) => {
-        if (event.target === lightbox) cerrarLightbox();
-    });
-
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-            cerrarMenu();
-            setWhatsappOpen(false);
-            cerrarLightbox();
-        }
-    });
+let saved;
+try {
+  saved = localStorage.getItem(storageKey);
+} catch {
+  /* Storage is optional. */
+}
+setLanguage(saved);
+selector.addEventListener("change", () => {
+  setLanguage(selector.value);
+  try {
+    localStorage.setItem(storageKey, lang);
+  } catch {
+    /* This visit still uses the chosen language. */
+  }
 });
+
+const header = document.querySelector(".site-header");
+const nav = document.getElementById("nav");
+const menu = document.getElementById("menu");
+const mobileNav = matchMedia("(max-width: 970px)");
+
+function setMenu(open) {
+  nav.classList.toggle("open", open);
+  menu.setAttribute("aria-expanded", String(open));
+}
+
+header.classList.add("nav-ready");
+menu.addEventListener("click", () => setMenu(!nav.classList.contains("open")));
+nav.addEventListener("click", (event) => {
+  const link = event.target.closest("a");
+  if (!link || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
+    return;
+  if (mobileNav.matches)
+    document.getElementById(link.hash.slice(1))?.focus({ preventScroll: true });
+  setMenu(false);
+});
+document.addEventListener("click", (event) => {
+  if (!header.contains(event.target)) setMenu(false);
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && nav.classList.contains("open")) {
+    setMenu(false);
+    menu.focus();
+  }
+});
+mobileNav.addEventListener("change", () => {
+  if (mobileNav.matches && nav.contains(document.activeElement)) menu.focus();
+  setMenu(false);
+});
+
+const sections = [...document.querySelectorAll("main .section")];
+const navLinks = new Map(
+  [...nav.querySelectorAll("a")].map((link) => [link.hash.slice(1), link]),
+);
+const progress = document.querySelector(".progress");
+let current;
+let frame = 0;
+
+function updateScroll() {
+  frame = 0;
+  const max = root.scrollHeight - root.clientHeight;
+  const position = scrollY;
+  const activationLine = header.offsetHeight + 30;
+  let section = sections[0];
+  for (const item of sections) {
+    if (item.getBoundingClientRect().top <= activationLine) section = item;
+  }
+  const atEnd = max > 0 && position >= max - 1;
+  if (atEnd) section = sections.at(-1);
+  if (section.id !== current) {
+    navLinks.get(current)?.removeAttribute("aria-current");
+    navLinks.get(section.id).setAttribute("aria-current", "location");
+    current = section.id;
+  }
+  progress.style.transform = `scaleX(${atEnd ? 1 : max > 0 ? Math.max(0, position / max) : 0})`;
+  motion?.onScroll(position);
+}
+
+function scheduleScroll() {
+  if (!frame) frame = requestAnimationFrame(updateScroll);
+}
+
+addEventListener("scroll", scheduleScroll, { passive: true });
+addEventListener("resize", scheduleScroll);
+addEventListener("pageshow", scheduleScroll);
+if ("ResizeObserver" in window) {
+  const sizes = new ResizeObserver(scheduleScroll);
+  sizes.observe(document.body);
+  sizes.observe(header);
+}
+updateScroll();
+
+// Movement is progressive enhancement; a missing module must not block contact.
+import("./motion.js")
+  .then(({ initMotion }) => {
+    motion = initMotion(tr);
+    motion.onScroll(scrollY);
+  })
+  .catch(() => {
+    /* The page remains usable with the static artwork. */
+  });

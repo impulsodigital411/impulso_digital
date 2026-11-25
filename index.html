@@ -1,548 +1,906 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Impulso desarrolla software a medida, sistemas web, catálogos, tiendas online y soluciones digitales para negocios que necesitan organizar procesos y crecer.">
-    <title>Impulso - Sistemas, páginas web y software a medida</title>
-    <link rel="icon" href="impulso_logo_assets/impulso_favicon.png" type="image/png">
-    <link rel="stylesheet" href="estilos/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header class="header" id="header">
-        <div class="container header__container">
-            <a href="#inicio" class="brand" aria-label="Ir al inicio">
-                <img src="impulso_logo_assets/impulso_logo_horizontal_nav.png" alt="IMPULSO" class="brand__logo">
-            </a>
-
-            <nav class="nav" id="nav" aria-label="Navegación principal">
-                <ul class="nav__list">
-                    <li><a href="#inicio" class="nav__link">Inicio</a></li>
-                    <li><a href="#servicios" class="nav__link">Servicios</a></li>
-                    <li><a href="#proyectos" class="nav__link">Proyectos</a></li>
-                    <li><a href="#nosotros" class="nav__link">Nosotros</a></li>
-                    <li><a href="#contacto" class="nav__link">Contacto</a></li>
-                </ul>
-            </nav>
-
-            <a href="#contacto" class="btn btn--primary header__cta">Solicitar asesoramiento</a>
-
-            <button class="hamburger" id="hamburger" type="button" aria-label="Abrir menú" aria-controls="nav" aria-expanded="false">
-                <span class="hamburger__line"></span>
-                <span class="hamburger__line"></span>
-                <span class="hamburger__line"></span>
-            </button>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="#181719" name="theme-color" />
+    <title>Impulso | Agencia de software a medida</title>
+    <meta
+      content="Desarrollamos sistemas, sitios web y herramientas digitales a medida para simplificar tu trabajo y acompañar tu crecimiento."
+      name="description"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Impulso" />
+    <meta property="og:locale" content="es_AR" />
+    <meta
+      property="og:title"
+      content="Impulso | Agencia de software a medida"
+    />
+    <meta
+      property="og:description"
+      content="Desarrollamos sistemas, sitios web y herramientas digitales a medida para simplificar tu trabajo y acompañar tu crecimiento."
+    />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Impulso",
+        "description": "Agencia de software a medida de San Juan, Argentina.",
+        "email": "impulsodigital411@gmail.com",
+        "telephone": "+54 9 264 631 3348",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "San Juan",
+          "addressCountry": "AR"
+        },
+        "sameAs": ["https://www.instagram.com/impulso_sj/"]
+      }
+    </script>
+    <link href="estilos/styles.css" rel="stylesheet" />
+    <link href="estilos/hero.css" rel="stylesheet" />
+    <link href="estilos/motion.css" rel="stylesheet" />
+    <link
+      href="imagenes/logo/favicon.png"
+      rel="icon"
+      type="image/png"
+      sizes="64x64"
+    />
+  </head>
+  <body>
+    <a class="skip" href="#main"
+      ><span data-i="skip">Saltar al contenido</span></a
+    >
+    <div aria-hidden="true" class="progress"></div>
+    <header class="site-header">
+      <div class="navwrap">
+        <a class="brand" href="#inicio">
+          <img
+            alt="Impulso"
+            width="2131"
+            height="707"
+            src="imagenes/logo/impulso.png"
+          />
+        </a>
+        <nav
+          aria-label="Menú principal"
+          data-i-label="navLabel"
+          class="site-nav"
+          id="nav"
+        >
+          <a data-i="home" data-route="inicio" href="#inicio">Inicio</a>
+          <a data-i="services" data-route="servicios" href="#servicios"
+            >Servicios</a
+          >
+          <a data-i="catalog" data-route="catalogo" href="#catalogo"
+            >Catálogo</a
+          >
+          <a data-i="about" data-route="nosotros" href="#nosotros">Nosotros</a>
+          <a data-i="process" data-route="metodologia" href="#metodologia"
+            >Cómo trabajamos</a
+          ><a data-i="contact" data-route="contacto" href="#contacto"
+            >Contacto</a
+          >
+        </nav>
+        <div class="tools">
+          <label class="language"
+            ><span data-i="lang">Idioma</span>
+            <select aria-label="Idioma" data-i-label="lang" id="language">
+              <option value="es" lang="es">Español</option>
+              <option value="en" lang="en">English</option>
+              <option value="de" lang="de">Deutsch</option>
+              <option value="fr" lang="fr">Français</option>
+              <option value="ru" lang="ru">Русский</option>
+              <option value="zh" lang="zh-Hans">简体中文</option>
+              <option value="ja" lang="ja">日本語</option>
+              <option value="ko" lang="ko">한국어</option>
+            </select>
+          </label>
+          <button
+            aria-controls="nav"
+            aria-expanded="false"
+            aria-label="Menú"
+            data-i-label="menu"
+            class="menu"
+            id="menu"
+            type="button"
+          >
+            <span></span><span></span><span></span>
+          </button>
         </div>
+      </div>
     </header>
-
-    <main>
-        <section class="hero" id="inicio">
-            <div class="hero__bg" aria-hidden="true">
-                <span class="hero__shape hero__shape--1"></span>
-                <span class="hero__shape hero__shape--2"></span>
-                <span class="hero__shape hero__shape--3"></span>
+    <main id="main" tabindex="-1">
+      <section class="section hero" id="inicio" tabindex="-1">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-aura" aria-hidden="true"></div>
+        <svg
+          aria-hidden="true"
+          class="ribbon-art"
+          preserveAspectRatio="xMidYMid slice"
+          viewBox="0 0 1600 850"
+        >
+          <defs>
+            <linearGradient id="thread" x1="0%" x2="100%" y1="0%" y2="40%">
+              <stop stop-color="#59363e"></stop>
+              <stop offset=".43" stop-color="#ba6a66"></stop>
+              <stop offset=".75" stop-color="#e8a46e"></stop>
+              <stop offset="1" stop-color="#a75d65"></stop>
+            </linearGradient>
+            <linearGradient id="silk" x1="0%" x2="100%" y1="100%" y2="0%">
+              <stop stop-color="#2a2229" stop-opacity="0"></stop>
+              <stop offset=".53" stop-color="#ac584c" stop-opacity=".53"></stop>
+              <stop offset="1" stop-color="#563344" stop-opacity="0"></stop>
+            </linearGradient>
+            <linearGradient id="flare">
+              <stop stop-color="#af5d5f" stop-opacity="0" />
+              <stop offset=".57" stop-color="#f5bc85" stop-opacity=".84" />
+              <stop offset="1" stop-color="#b76d72" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+          <g class="ribbon-motion" fill="none">
+            <path
+              d="M-120 720 C 400 620 540 90 900 300 S 1420 500 1740 80 L 1740 390 C 1360 710 1180 480 870 425 S 350 960 -120 810Z"
+              fill="url(#silk)"
+            ></path>
+            <path
+              d="M-130 430 C 240 190, 600 -160, 920 45 S 1400 250, 1750 -120"
+              opacity="0.13"
+              stroke="url(#thread)"
+              stroke-width="1.7"
+            ></path>
+            <path
+              d="M-130 449 C 240 209, 600 -141, 920 64 S 1400 269, 1750 -101"
+              opacity="0.15"
+              stroke="url(#thread)"
+              stroke-width="1"
+            ></path>
+            <path
+              d="M-130 468 C 240 228, 600 -122, 920 83 S 1400 288, 1750 -82"
+              opacity="0.16"
+              stroke="url(#thread)"
+              stroke-width="1"
+            ></path>
+            <path
+              d="M-130 487 C 240 247, 600 -103, 920 102 S 1400 307, 1750 -63"
+              opacity="0.18"
+              stroke="url(#thread)"
+              stroke-width="1"
+            ></path>
+            <path
+              d="M-130 506 C 240 266, 600 -84, 920 121 S 1400 326, 1750 -44"
+              opacity="0.19"
+              stroke="url(#thread)"
+              stroke-width="1.7"
+            ></path>
+            <path
+              d="M-130 525 C 240 285, 600 -65, 920 140 S 1400 345, 1750 -25"
+              opacity="0.21"
+              stroke="url(#thread)"
+              stroke-width="1"
+            ></path>
+            <path
+              d="M-130 544 C 240 304, 600 -46, 920 159 S 1400 364, 1750 -6"
+              opacity="0.23"
+              stroke="url(#thread)"
+              stroke-width="1"
+            ></path>
+            <path
+              d="M-130 563 C 240 323, 600 -27, 920 178 S 1400 383, 1750 13"
+              opacity="0.24"
+              stroke="url(#thread)"
+              stroke-width="1"
+            ></path>
+            <path
+              d="M-130 582 C 240 342, 600 -8, 920 197 S 1400 402, 1750 32"
+              opacity="0.26"
+              stroke="url(#thread)"
+              stroke-width="1.7"
+            ></path>
+            <path
+              d="M-130 601 C 240 361, 600 11, 920 216 S 1400 421, 1750 51"
+              opacity="0.27"
+              stroke="url(#thread)"
+              stroke-width="1"
+            ></path>
+            <path
+              d="M-130 620 C 240 380, 600 30, 920 235 S 1400 440, 1750 70"
+              opacity="0.29"
+              stroke="url(#thread)"
+              stroke-width="1"
+            ></path>
+            <path
+              d="M-130 639 C 240 399, 600 49, 920 254 S 1400 459, 1750 89"
+              opacity="0.31"
+              stroke="url(#thread)"
+              stroke-width="1"
+            ></path>
+            <path
+              d="M-130 658 C 240 418, 600 68, 920 273 S 1400 478, 1750 108"
+              opacity="0.32"
+              stroke="url(#thread)"
+              stroke-width="1.7"
+            ></path>
+            <path
+              d="M-130 677 C 240 437, 600 87, 920 292 S 1400 497, 1750 127"
+              opacity="0.34"
+              stroke="url(#thread)"
+              stroke-width="1"
+            ></path>
+            <path
+              d="M-130 696 C 240 456, 600 106, 920 311 S 1400 516, 1750 146"
+              opacity="0.35"
+              stroke="url(#thread)"
+              stroke-width="1"
+            ></path>
+            <path
+              d="M-130 715 C 240 475, 600 125, 920 330 S 1400 535, 1750 165"
+              opacity="0.37"
+              stroke="url(#thread)"
+              stroke-width="1"
+            ></path>
+            <path
+              d="M-130 734 C 240 494, 600 144, 920 349 S 1400 554, 1750 184"
+              opacity="0.39"
+              stroke="url(#thread)"
+              stroke-width="1.7"
+            ></path>
+            <path
+              d="M-130 753 C 240 513, 600 163, 920 368 S 1400 573, 1750 203"
+              opacity="0.40"
+              stroke="url(#thread)"
+              stroke-width="1"
+            ></path>
+            <path
+              d="M-130 772 C 240 532, 600 182, 920 387 S 1400 592, 1750 222"
+              opacity="0.42"
+              stroke="url(#thread)"
+              stroke-width="1"
+            ></path>
+            <path
+              d="M-130 791 C 240 551, 600 201, 920 406 S 1400 611, 1750 241"
+              opacity="0.43"
+              stroke="url(#thread)"
+              stroke-width="1"
+            ></path>
+            <path
+              d="M-130 810 C 240 570, 600 220, 920 425 S 1400 630, 1750 260"
+              opacity="0.45"
+              stroke="url(#thread)"
+              stroke-width="1.7"
+            ></path>
+            <path
+              d="M-130 829 C 240 589, 600 239, 920 444 S 1400 649, 1750 279"
+              opacity="0.47"
+              stroke="url(#thread)"
+              stroke-width="1"
+            ></path>
+            <path
+              d="M-130 848 C 240 608, 600 258, 920 463 S 1400 668, 1750 298"
+              opacity="0.48"
+              stroke="url(#thread)"
+              stroke-width="1"
+            ></path>
+            <path
+              d="M-130 867 C 240 627, 600 277, 920 482 S 1400 687, 1750 317"
+              opacity="0.50"
+              stroke="url(#thread)"
+              stroke-width="1"
+            ></path>
+          </g>
+          <g class="ribbon-crest" fill="none" stroke="url(#flare)">
+            <path
+              d="M-130 754 C240 514 600 164 920 369 S1400 574 1750 204"
+              stroke-width="1.6"
+            />
+            <path
+              d="M-130 772 C240 532 600 182 920 387 S1400 592 1750 222"
+              opacity=".48"
+            />
+          </g>
+        </svg>
+        <div class="hero-copy reveal">
+          <div class="eyebrow">
+            <i></i><span data-i="heroKicker">AGENCIA DE SOFTWARE</span>
+          </div>
+          <h1>
+            <span data-i="heroA">Tu negocio,</span>
+            <span data-i="heroB">sin límites</span>
+            <em data-i="heroC">tecnológicos.</em>
+          </h1>
+          <p class="lead" data-i="heroText">
+            Desarrollamos sistemas, sitios web y herramientas digitales a medida
+            para simplificar tu trabajo y acompañar tu crecimiento.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#contacto"
+              ><span data-i="cta">Hablemos de tu proyecto</span
+              ><span aria-hidden="true">↗</span></a
+            >
+            <a class="button secondary" href="#catalogo"
+              ><span data-i="explore">Explorar soluciones</span
+              ><span aria-hidden="true">↘</span></a
+            >
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div aria-hidden="true" class="halo"></div>
+          <div aria-hidden="true" class="logo-stage">
+            <svg class="instrument" viewBox="0 0 500 500" fill="none">
+              <circle
+                cx="250"
+                cy="250"
+                r="239"
+                stroke="currentColor"
+                stroke-dasharray="1 5"
+                opacity=".62"
+              />
+              <circle
+                cx="250"
+                cy="250"
+                r="203"
+                stroke="currentColor"
+                opacity=".40"
+              />
+              <circle
+                cx="250"
+                cy="250"
+                r="169"
+                stroke="currentColor"
+                stroke-dasharray="4 9"
+                opacity=".40"
+              />
+              <path
+                d="M250 3v23m0 448v23M3 250h23m448 0h23"
+                stroke="currentColor"
+                opacity=".85"
+              />
+              <path
+                d="M100 65a238 238 0 0 1 54-32m249 399a238 238 0 0 1-53 32"
+                stroke="#ea9e6d"
+                stroke-width="2"
+                opacity=".76"
+              />
+              <circle cx="70" cy="184" r="3" fill="#e39b69" />
+              <circle cx="430" cy="319" r="3" fill="#d18173" />
+            </svg>
+            <div class="orbit-plane plane-1">
+              <div class="orbit-ring r1"><i></i><i></i><i></i></div>
             </div>
-
-            <div class="container hero__container">
-                <div class="hero__content">
-                    <h1 class="hero__title">Creamos sistemas, páginas web y herramientas digitales para impulsar tu negocio.</h1>
-                    <p class="hero__subtitle">En Impulso desarrollamos soluciones claras, funcionales y adaptadas a cada necesidad. Creamos páginas, sistemas y herramientas digitales pensadas para ordenar procesos, mejorar la atención y facilitar el crecimiento de cada negocio.</p>
-                    <div class="hero__actions">
-                        <a href="#contacto" class="btn btn--primary btn--lg">Solicitar asesoramiento</a>
-                        <a href="#proyectos" class="btn btn--outline btn--lg">Ver proyectos</a>
-                    </div>
-                    <div class="hero__badges" aria-label="Beneficios principales">
-                        <span>Desarrollo a medida</span>
-                        <span>Diseño responsive</span>
-                        <span>Soporte cercano</span>
-                    </div>
-                </div>
-
-                <div class="hero__visual" aria-label="Resumen de valor de Impulso">
-                    <div class="hero__panel">
-                        <div class="hero__panel-header">
-                            <span></span><span></span><span></span>
-                        </div>
-                        <div class="hero__panel-body">
-                            <div class="hero__metric">
-                                <strong>Diagnóstico inicial</strong>
-                                <span>Relevamos tu idea, tus procesos y el objetivo comercial antes de desarrollar.</span>
-                            </div>
-                            <div class="hero__metric">
-                                <strong>Solución concreta</strong>
-                                <span>Diseñamos sistemas, catálogos o sitios web pensados para usuarios reales.</span>
-                            </div>
-                            <div class="hero__metric">
-                                <strong>Entrega y acompañamiento</strong>
-                                <span>Probamos, ajustamos y dejamos todo listo para usar desde cualquier dispositivo.</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="hero__card hero__card--1">
-                        <span class="hero__card-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24"><path d="M4 16l5-5 4 4 7-8" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 7h6v6" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </span>
-                        <div>
-                            <strong>Procesos más ordenados</strong>
-                            <small>menos planillas sueltas y más control</small>
-                        </div>
-                    </div>
-                    <div class="hero__card hero__card--2">
-                        <span class="hero__card-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24"><path d="M4 6h16v10H7l-3 3V6z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
-                        </span>
-                        <div>
-                            <strong>Comunicación directa</strong>
-                            <small>formularios y consultas por WhatsApp</small>
-                        </div>
-                    </div>
-                    <div class="hero__card hero__card--3">
-                        <span class="hero__card-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="2.1"/><path d="M9 19h6" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/><path d="M12 15v4" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/></svg>
-                        </span>
-                        <div>
-                            <strong>Adaptación total</strong>
-                            <small>celular, tablet y computadora</small>
-                        </div>
-                    </div>
-                </div>
+            <div class="orbit-plane plane-2">
+              <div class="orbit-ring r2 orbit-guide"></div>
+              <div class="orbit-far">
+                <div class="orbit-ring r2"><i></i><i></i></div>
+              </div>
             </div>
-        </section>
-
-        <section class="section servicios" id="servicios">
-            <div class="container">
-                <div class="section__header fade-in">
-                    <span class="section__tag">Servicios</span>
-                    <h2 class="section__title">Soluciones digitales para mostrar mejor tu negocio y trabajar con más organización.</h2>
-                    <p class="section__desc">No desarrollamos una pantalla aislada sin sentido. Creamos herramientas pensadas para resolver una necesidad concreta: vender, ordenar, atender, administrar o presentar mejor una marca.</p>
-                </div>
-
-                <div class="servicios__grid">
-                    <article class="servicio__card fade-in">
-                        <div class="servicio__icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 19h8M12 16v3M8 9h8M8 12h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                        </div>
-                        <h3>Sistemas web a medida</h3>
-                        <p>Paneles administrativos, módulos de gestión y plataformas internas para controlar información importante del negocio desde un solo lugar.</p>
-                    </article>
-
-                    <article class="servicio__card fade-in">
-                        <div class="servicio__icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24"><path d="M6 8h12l-1 11H7L6 8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 016 0v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                        </div>
-                        <h3>Catálogos y tiendas online</h3>
-                        <p>Presentación ordenada de productos, filtros, categorías, consultas por WhatsApp y opciones de compra según la necesidad de cada rubro.</p>
-                    </article>
-
-                    <article class="servicio__card fade-in">
-                        <div class="servicio__icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                        </div>
-                        <h3>Páginas web profesionales</h3>
-                        <p>Sitios institucionales y landing pages con textos claros, identidad visual, estructura comercial y contacto directo para recibir consultas.</p>
-                    </article>
-
-                    <article class="servicio__card fade-in">
-                        <div class="servicio__icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 12h2M10 12h10M4 17h10M18 17h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="7" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="8" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-                        </div>
-                        <h3>Reportes, control y automatización</h3>
-                        <p>Dashboards, métricas, estados, movimientos y flujos digitales para reducir tareas repetitivas y tomar mejores decisiones.</p>
-                    </article>
-                </div>
+            <div class="orbit-plane plane-3">
+              <div class="orbit-ring r3"><i></i><i></i></div>
             </div>
-        </section>
-
-        <section class="section proyectos" id="proyectos">
-            <div class="container">
-                <div class="section__header fade-in">
-                    <span class="section__tag">Proyectos</span>
-                    <h2 class="section__title">Ejemplos visuales de sistemas que podemos desarrollar.</h2>
-                    <p class="section__desc">Estas pantallas sirven para que el cliente vea algo concreto: módulos, paneles, listados, catálogos, formularios, reportes y flujos de trabajo que pueden adaptarse a su propio negocio.</p>
-                </div>
-
-                <div class="project-showcase">
-                    <article class="project-row fade-in" data-project-row>
-                        <div class="project-info project-info--blue">
-                            <span class="project-info__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v8a1 1 0 01-1 1h-5v-6h-4v6H5a1 1 0 01-1-1v-8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
-                            <p class="project-info__label">Inmobiliaria</p>
-                            <h3>Sistema inmobiliario para propiedades, clientes y oportunidades</h3>
-                            <p>Soluciones para inmobiliarias que necesitan publicar propiedades, organizar contactos, administrar consultas, registrar visitas y seguir oportunidades comerciales desde un panel claro.</p>
-                            <ul class="project-tags">
-                                <li>Propiedades</li><li>Leads</li><li>Clientes</li><li>Visitas</li><li>Reportes</li>
-                            </ul>
-                            <a href="#contacto" class="project-consult" data-project="Sistema inmobiliario">Consultar este proyecto</a>
-                        </div>
-                        <div class="project-gallery">
-                            <button class="gallery-btn gallery-btn--prev" type="button" aria-label="Ver proyectos anteriores"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                            <div class="project-slider" tabindex="0">
-                                <button class="project-image-card" type="button" data-lightbox="imagenes/proyectos/inmobiliaria-home.webp" data-title="Web inmobiliaria con buscador de propiedades"><img src="imagenes/proyectos/inmobiliaria-home.webp" alt="Web inmobiliaria con buscador de propiedades"><span>Web pública</span></button>
-                                <button class="project-image-card" type="button" data-lightbox="imagenes/proyectos/inmobiliaria-busqueda.webp" data-title="Listado de propiedades con filtros y mapa"><img src="imagenes/proyectos/inmobiliaria-busqueda.webp" alt="Listado de propiedades con filtros y mapa"><span>Filtros y mapa</span></button>
-                                <button class="project-image-card" type="button" data-lightbox="imagenes/proyectos/inmobiliaria-dashboard.webp" data-title="Dashboard de indicadores inmobiliarios"><img src="imagenes/proyectos/inmobiliaria-dashboard.webp" alt="Dashboard de indicadores inmobiliarios"><span>Dashboard</span></button>
-                                <button class="project-image-card" type="button" data-lightbox="imagenes/proyectos/inmobiliaria-leads.webp" data-title="Gestión de leads y propiedades"><img src="imagenes/proyectos/inmobiliaria-leads.webp" alt="Gestión de leads y propiedades"><span>Leads</span></button>
-                            </div>
-                            <button class="gallery-btn gallery-btn--next" type="button" aria-label="Ver más proyectos"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                        </div>
-                    </article>
-
-                    <article class="project-row fade-in" data-project-row>
-                        <div class="project-info project-info--green">
-                            <span class="project-info__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 4h4v6h6v4h-6v6h-4v-6H4v-4h6V4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
-                            <p class="project-info__label">Salud y turnos</p>
-                            <h3>Sistema de turnos, pacientes e historia clínica</h3>
-                            <p>Plataformas para clínicas, consultorios y profesionales que necesitan ordenar turnos, registrar pacientes, consultar información clínica y mejorar la atención diaria.</p>
-                            <ul class="project-tags">
-                                <li>Agenda</li><li>Pacientes</li><li>Historia clínica</li><li>Recetas</li><li>Mensajes</li>
-                            </ul>
-                            <a href="#contacto" class="project-consult" data-project="Sistema de salud y turnos">Consultar este proyecto</a>
-                        </div>
-                        <div class="project-gallery">
-                            <button class="gallery-btn gallery-btn--prev" type="button" aria-label="Ver proyectos anteriores"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                            <div class="project-slider" tabindex="0">
-                                <button class="project-image-card" type="button" data-lightbox="imagenes/proyectos/salud-home.webp" data-title="Web para solicitar turnos médicos"><img src="imagenes/proyectos/salud-home.webp" alt="Web para solicitar turnos médicos"><span>Reserva de turnos</span></button>
-                                <button class="project-image-card" type="button" data-lightbox="imagenes/proyectos/salud-turnos.webp" data-title="Búsqueda de profesionales y horarios"><img src="imagenes/proyectos/salud-turnos.webp" alt="Búsqueda de profesionales y horarios"><span>Profesionales</span></button>
-                                <button class="project-image-card" type="button" data-lightbox="imagenes/proyectos/salud-paciente.webp" data-title="Portal del paciente"><img src="imagenes/proyectos/salud-paciente.webp" alt="Portal del paciente"><span>Portal paciente</span></button>
-                                <button class="project-image-card" type="button" data-lightbox="imagenes/proyectos/salud-admin.webp" data-title="Panel administrativo de clínica"><img src="imagenes/proyectos/salud-admin.webp" alt="Panel administrativo de clínica"><span>Panel admin</span></button>
-                                <button class="project-image-card" type="button" data-lightbox="imagenes/proyectos/salud-historia-clinica.webp" data-title="Ficha clínica del paciente"><img src="imagenes/proyectos/salud-historia-clinica.webp" alt="Ficha clínica del paciente"><span>Historia clínica</span></button>
-                            </div>
-                            <button class="gallery-btn gallery-btn--next" type="button" aria-label="Ver más proyectos"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                        </div>
-                    </article>
-
-                    <article class="project-row fade-in" data-project-row>
-                        <div class="project-info project-info--orange">
-                            <span class="project-info__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3v8M5 3v8M9 3v8M5 11h4v10M16 3v18M16 3c3 1.4 4 3.6 4 7h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                            <p class="project-info__label">Gastronomía / Viandas</p>
-                            <h3>Menú digital, pedidos, entregas y administración</h3>
-                            <p>Sistemas para viandas, restaurantes, rotiserías y delivery que necesitan recibir pedidos por WhatsApp, mostrar platos, controlar entregas y organizar la operación diaria.</p>
-                            <ul class="project-tags">
-                                <li>Menú</li><li>Pedidos</li><li>Checkout</li><li>Entregas</li><li>Stock</li>
-                            </ul>
-                            <a href="#contacto" class="project-consult" data-project="Sistema gastronómico o de viandas">Consultar este proyecto</a>
-                        </div>
-                        <div class="project-gallery">
-                            <button class="gallery-btn gallery-btn--prev" type="button" aria-label="Ver proyectos anteriores"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                            <div class="project-slider" tabindex="0">
-                                <button class="project-image-card" type="button" data-lightbox="imagenes/proyectos/viandas-home.webp" data-title="Web gastronómica con menú destacado"><img src="imagenes/proyectos/viandas-home.webp" alt="Web gastronómica con menú destacado"><span>Web comercial</span></button>
-                                <button class="project-image-card" type="button" data-lightbox="imagenes/proyectos/viandas-menu.webp" data-title="Menú digital con categorías"><img src="imagenes/proyectos/viandas-menu.webp" alt="Menú digital con categorías"><span>Menú digital</span></button>
-                                <button class="project-image-card" type="button" data-lightbox="imagenes/proyectos/viandas-detalle.webp" data-title="Detalle de producto y carrito"><img src="imagenes/proyectos/viandas-detalle.webp" alt="Detalle de producto y carrito"><span>Detalle</span></button>
-                                <button class="project-image-card" type="button" data-lightbox="imagenes/proyectos/viandas-checkout.webp" data-title="Checkout de pedido"><img src="imagenes/proyectos/viandas-checkout.webp" alt="Checkout de pedido"><span>Checkout</span></button>
-                                <button class="project-image-card" type="button" data-lightbox="imagenes/proyectos/viandas-admin.webp" data-title="Panel administrativo de viandas"><img src="imagenes/proyectos/viandas-admin.webp" alt="Panel administrativo de viandas"><span>Panel admin</span></button>
-                            </div>
-                            <button class="gallery-btn gallery-btn--next" type="button" aria-label="Ver más proyectos"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                        </div>
-                    </article>
-
-                    <article class="project-row fade-in" data-project-row>
-                        <div class="project-info project-info--indigo">
-                            <span class="project-info__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M4.5 8L12 12.2 19.5 8M12 21v-8.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
-                            <p class="project-info__label">Distribución / Stock</p>
-                            <h3>Sistema de inventario, almacenes, compras y reportes</h3>
-                            <p>Herramientas para controlar productos, movimientos, transferencias, proveedores, alertas de stock y reportes operativos en negocios con mercadería.</p>
-                            <ul class="project-tags">
-                                <li>Inventario</li><li>Compras</li><li>Ventas</li><li>Almacenes</li><li>Alertas</li>
-                            </ul>
-                            <a href="#contacto" class="project-consult" data-project="Sistema de stock e inventario">Consultar este proyecto</a>
-                        </div>
-                        <div class="project-gallery">
-                            <button class="gallery-btn gallery-btn--prev" type="button" aria-label="Ver proyectos anteriores"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                            <div class="project-slider" tabindex="0">
-                                <button class="project-image-card" type="button" data-lightbox="imagenes/proyectos/stock-dashboard.webp" data-title="Dashboard general de inventario"><img src="imagenes/proyectos/stock-dashboard.webp" alt="Dashboard general de inventario"><span>Dashboard</span></button>
-                                <button class="project-image-card" type="button" data-lightbox="imagenes/proyectos/stock-productos.webp" data-title="Listado de productos y stock"><img src="imagenes/proyectos/stock-productos.webp" alt="Listado de productos y stock"><span>Productos</span></button>
-                                <button class="project-image-card" type="button" data-lightbox="imagenes/proyectos/stock-transferencias.webp" data-title="Transferencias entre almacenes"><img src="imagenes/proyectos/stock-transferencias.webp" alt="Transferencias entre almacenes"><span>Transferencias</span></button>
-                                <button class="project-image-card" type="button" data-lightbox="imagenes/proyectos/stock-compras.webp" data-title="Compras y proveedores"><img src="imagenes/proyectos/stock-compras.webp" alt="Compras y proveedores"><span>Compras</span></button>
-                                <button class="project-image-card" type="button" data-lightbox="imagenes/proyectos/stock-reportes.webp" data-title="Reportes y alertas de stock"><img src="imagenes/proyectos/stock-reportes.webp" alt="Reportes y alertas de stock"><span>Reportes</span></button>
-                            </div>
-                            <button class="gallery-btn gallery-btn--next" type="button" aria-label="Ver más proyectos"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                        </div>
-                    </article>
-
-                    <article class="project-row fade-in" data-project-row>
-                        <div class="project-info project-info--purple">
-                            <span class="project-info__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 9v6M19 9v6M8 7v10M16 7v10M8 12h8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                            <p class="project-info__label">Fitness / Gimnasios</p>
-                            <h3>Web o sistema para planes, clases y consultas comerciales</h3>
-                            <p>Sitios y sistemas para gimnasios, estudios deportivos o entrenadores que necesitan mostrar servicios, administrar planes y recibir consultas por WhatsApp.</p>
-                            <ul class="project-tags">
-                                <li>Planes</li><li>Clases</li><li>Entrenadores</li><li>Horarios</li><li>Consultas</li>
-                            </ul>
-                            <a href="#contacto" class="project-consult" data-project="Sistema o web para gimnasio">Consultar este proyecto</a>
-                        </div>
-                        <div class="project-gallery project-gallery--single">
-                            <div class="project-slider" tabindex="0">
-                                <button class="project-image-card project-image-card--wide" type="button" data-lightbox="imagenes/proyectos/fitness-home.webp" data-title="Web profesional para gimnasio"><img src="imagenes/proyectos/fitness-home.webp" alt="Web profesional para gimnasio"><span>Web de gimnasio</span></button>
-                            </div>
-                        </div>
-                    </article>
-                </div>
+            <div class="logo-float">
+              <div class="logo-core">
+                <img
+                  alt=""
+                  width="690"
+                  height="690"
+                  src="imagenes/logo/impulso-isotipo.png"
+                />
+                <img
+                  class="back"
+                  alt=""
+                  width="690"
+                  height="690"
+                  src="imagenes/logo/impulso-isotipo.png"
+                />
+              </div>
             </div>
-        </section>
-
-        <section class="section nosotros" id="nosotros">
-            <div class="container nosotros__grid">
-                <div class="nosotros__content fade-in">
-                    <span class="section__tag">Acerca de nosotros</span>
-                    <h2 class="section__title">Somos un equipo enfocado en crear soluciones útiles, claras y sostenibles para negocios reales.</h2>
-                    <p class="nosotros__text">Impulso nace para acompañar a emprendedores, comercios, profesionales y empresas que quieren digitalizar procesos sin perder claridad. Nuestro trabajo combina análisis, diseño, desarrollo y comunicación para transformar una idea en una herramienta concreta.</p>
-                    <p class="nosotros__text">Buscamos que cada cliente entienda qué se está construyendo, para qué sirve y cómo puede ayudar a mejorar su gestión diaria. Por eso trabajamos con ejemplos visuales, propuestas ordenadas y acompañamiento durante cada etapa.</p>
-
-                    <div class="nosotros__features">
-                        <div class="nosotros__feature">
-                            <span class="nosotros__feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 6.5A2.5 2.5 0 017.5 4h9A2.5 2.5 0 0119 6.5v7A2.5 2.5 0 0116.5 16H10l-5 4v-3.8A2.5 2.5 0 015 13.7V6.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 9h6M9 12h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-                            <div>
-                                <h3>Qué hacemos</h3>
-                                <p>Desarrollamos páginas web, sistemas de gestión, catálogos, paneles administrativos y flujos de consulta por WhatsApp adaptados a cada rubro.</p>
-                            </div>
-                        </div>
-                        <div class="nosotros__feature">
-                            <span class="nosotros__feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19l4.5-1.2L18.8 7.5a1.5 1.5 0 000-2.1l-1.2-1.2a1.5 1.5 0 00-2.1 0L5.2 14.5 4 19z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M13.5 6.5l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-                            <div>
-                                <h3>Forma de trabajo</h3>
-                                <p>Relevamos la necesidad, ordenamos el alcance, diseñamos pantallas claras, desarrollamos la solución y acompañamos la puesta en marcha.</p>
-                            </div>
-                        </div>
-                        <div class="nosotros__feature">
-                            <span class="nosotros__feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.2-2.9 8.1-7 9.1-4.1-1-7-4.9-7-9.1V6l7-3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9.5 12.5l1.8 1.8 3.8-4.3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                            <div>
-                                <h3>Acompañamiento real</h3>
-                                <p>Probamos el sitio o sistema, revisamos celular, tablet y computadora, y dejamos la solución lista para usar con soporte cercano.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="nosotros__summary fade-in">
-                    <div class="summary__card">
-                        <div class="summary__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></div>
-                        <span>Quiénes somos</span>
-                        <p>Un equipo de desarrollo y diseño orientado a crear herramientas digitales prácticas para mejorar la gestión y la presencia online de cada negocio.</p>
-                    </div>
-                    <div class="summary__card">
-                        <div class="summary__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-                        <span>Misión</span>
-                        <p>Desarrollar soluciones digitales a medida que ayuden a ordenar procesos, mejorar la atención y fortalecer el crecimiento de nuestros clientes.</p>
-                    </div>
-                    <div class="summary__card">
-                        <div class="summary__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-                        <span>Visión</span>
-                        <p>Ser una referencia local en software a medida, acompañando a negocios que buscan profesionalizar su forma de trabajar y comunicarse.</p>
-                    </div>
-                    <div class="summary__card">
-                        <div class="summary__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.5 7.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11A4.5 4.5 0 0112 5a4.5 4.5 0 018.5 2.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
-                        <span>Valores</span>
-                        <p>Compromiso, transparencia, mejora continua, cercanía y orientación a resultados. Cada proyecto se trabaja con responsabilidad y criterio.</p>
-                    </div>
-                </div>
+            <div class="orbit-plane plane-2 orbit-near">
+              <div class="orbit-ring r2"><i></i><i></i></div>
             </div>
-        </section>
-
-        <section class="section proceso" id="proceso">
-            <div class="container">
-                <div class="section__header fade-in">
-                    <span class="section__tag">Metodología</span>
-                    <h2 class="section__title">Cómo trabajamos cada proyecto.</h2>
-                    <p class="section__desc">Mantenemos un proceso simple y ordenado para que el cliente entienda qué se está haciendo y pueda tomar decisiones con claridad.</p>
-                </div>
-
-                <div class="proceso__steps">
-                    <article class="proceso__step fade-in">
-                        <span class="proceso__number" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 6.5A2.5 2.5 0 017.5 4h9A2.5 2.5 0 0119 6.5v6A2.5 2.5 0 0116.5 15H11l-5 4v-4.2A2.5 2.5 0 015 12.5v-6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 9h6M9 12h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-                        <div>
-                            <h3>Relevamos la necesidad</h3>
-                            <p>Escuchamos qué problema querés resolver y definimos objetivos, usuarios, módulos y alcance inicial.</p>
-                        </div>
-                    </article>
-                    <article class="proceso__step fade-in">
-                        <span class="proceso__number" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20l4.2-1.1L18.5 8.6a1.7 1.7 0 000-2.4l-.7-.7a1.7 1.7 0 00-2.4 0L5.1 15.8 4 20z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M13.8 7.2l3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-                        <div>
-                            <h3>Diseñamos la propuesta</h3>
-                            <p>Organizamos pantallas, secciones, textos y recorrido del usuario para que la solución sea fácil de entender.</p>
-                        </div>
-                    </article>
-                    <article class="proceso__step fade-in">
-                        <span class="proceso__number" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 20h8M12 17v3M9 11l2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                        <div>
-                            <h3>Desarrollamos y revisamos</h3>
-                            <p>Construimos la página o sistema, probamos el funcionamiento y ajustamos diseño, formulario y versión mobile.</p>
-                        </div>
-                    </article>
-                    <article class="proceso__step fade-in">
-                        <span class="proceso__number" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4l7 3v5c0 4-2.8 7.5-7 8.5C7.8 19.5 5 16 5 12V7l7-3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9.2 12.3l1.9 1.9 3.9-4.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                        <div>
-                            <h3>Entregamos y acompañamos</h3>
-                            <p>Dejamos el proyecto listo para usar y disponible para futuras mejoras, ampliaciones o mantenimiento.</p>
-                        </div>
-                    </article>
-                </div>
+          </div>
+        </div>
+        <div class="hero-controls">
+          <a class="scroll-cue" href="#servicios">
+            <span class="scroll-glyph" aria-hidden="true"><i></i></span>
+            <span data-i="services">Servicios</span>
+          </a>
+          <button
+            type="button"
+            class="motion-toggle"
+            id="motionToggle"
+            aria-label="Pausar animaciones"
+            hidden
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path class="pause-icon" d="M7 5h3v14H7zm7 0h3v14h-3z" />
+              <path class="play-icon" d="M8 5v14l11-7z" />
+            </svg>
+          </button>
+        </div>
+      </section>
+      <section class="section" id="servicios" tabindex="-1">
+        <div class="split-head reveal">
+          <div>
+            <div class="kicker" data-i="services">Servicios</div>
+            <h2 data-i="serviceTitle">Tecnología que resuelve.</h2>
+          </div>
+          <p class="intro" data-i="serviceLead">
+            Herramientas digitales que se adaptan a tu forma de trabajar.
+          </p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card panel reveal">
+            <div>
+              <span class="tag">01</span>
+              <h3 data-i="s1">Sistemas a medida</h3>
+              <p data-i="s1more">
+                Gestión, usuarios, registros, reportes y flujos de trabajo
+                adaptados a tu operación.
+              </p>
             </div>
-        </section>
-
-        <section class="section contacto" id="contacto">
-            <div class="container">
-                <div class="section__header fade-in">
-                    <span class="section__tag">Contacto</span>
-                    <h2 class="section__title">Contanos qué necesitás y coordinamos una propuesta.</h2>
-                    <p class="section__desc">Podés escribirnos por el formulario o elegir uno de nuestros canales de contacto directo. Al enviar el formulario, se abre WhatsApp con el mensaje listo para mandar.</p>
-                </div>
-
-                <div class="contacto__grid">
-                    <form class="contacto__form fade-in" id="contactForm" novalidate>
-                        <div class="form__group">
-                            <label for="nombre" class="form__label">Nombre completo</label>
-                            <input type="text" id="nombre" name="nombre" class="form__input" placeholder="Tu nombre" autocomplete="name">
-                        </div>
-                        <div class="form__group">
-                            <label for="email" class="form__label">Correo electrónico</label>
-                            <input type="email" id="email" name="email" class="form__input" placeholder="tu@email.com" autocomplete="email">
-                        </div>
-                        <div class="form__group">
-                            <label for="telefono" class="form__label">Teléfono</label>
-                            <input type="tel" id="telefono" name="telefono" class="form__input" inputmode="numeric" minlength="8" maxlength="15" pattern="[0-9]{8,15}" placeholder="Ej: 2646313348" autocomplete="tel">
-                        </div>
-                        <div class="form__group">
-                            <label for="servicio" class="form__label">Servicio de interés</label>
-                            <select id="servicio" name="servicio" class="form__input">
-                                <option value="">Seleccioná una opción</option>
-                                <option>Sistema web a medida</option>
-                                <option>Página web profesional</option>
-                                <option>Catálogo o tienda online</option>
-                                <option>Sistema de stock e inventario</option>
-                                <option>Sistema de turnos o agenda</option>
-                                <option>Sistema de pedidos</option>
-                                <option>Mantenimiento o rediseño</option>
-                                <option>Otro</option>
-                            </select>
-                        </div>
-                        <div class="form__group">
-                            <label for="destinoWhatsapp" class="form__label">Enviar consulta a</label>
-                            <select id="destinoWhatsapp" name="destinoWhatsapp" class="form__input">
-                                <option value="542646313348">WhatsApp 2646313348</option>
-                            </select>
-                        </div>
-                        <div class="form__group">
-                            <label for="mensaje" class="form__label">Mensaje</label>
-                            <textarea id="mensaje" name="mensaje" class="form__input form__textarea" placeholder="Contanos brevemente qué necesitás..." rows="5"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn--primary btn--lg form__btn">Enviar por WhatsApp</button>
-                        <p class="form__status" id="contactFormStatus" aria-live="polite"></p>
-                    </form>
-
-                    <aside class="contacto__info fade-in" aria-label="Datos de contacto">
-                        <div class="contacto__aside-header">
-                            <span class="section__tag contacto__mini-tag">Canales directos</span>
-                            <h3>Estamos para ayudarte</h3>
-                            <p>Elegí el medio que te resulte más cómodo para hacer tu consulta. Si ya tenés una idea, podemos ayudarte a transformarla en una propuesta ordenada.</p>
-                        </div>
-
-                        <div class="contacto__item">
-                            <span class="contacto__item-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24"><path d="M12 21s6-5.2 6-11a6 6 0 10-12 0c0 5.8 6 11 6 11z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-                            </span>
-                            <div>
-                                <h3>Ubicación</h3>
-                                <p>San Juan, Argentina</p>
-                            </div>
-                        </div>
-                        <div class="contacto__item contacto__item--whatsapp">
-                            <span class="contacto__item-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24"><path d="M20 16.2v2a2 2 0 01-2.2 2 16.2 16.2 0 01-7-2.5 15.8 15.8 0 01-4.9-4.9A16.2 16.2 0 013.4 5.8 2 2 0 015.4 4h2a2 2 0 012 1.7l.3 2a2 2 0 01-.6 1.8l-1 1a12.5 12.5 0 005.2 5.2l1-1a2 2 0 011.8-.6l2 .3A2 2 0 0120 16.2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-                            </span>
-                            <div class="contacto__item-body">
-                                <h3>WhatsApp</h3>
-                                <div class="contacto__phone-list">
-                                    <a href="https://wa.me/542646313348" target="_blank" rel="noopener noreferrer">2646313348</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="contacto__item">
-                            <span class="contacto__item-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-                            </span>
-                            <div>
-                                <h3>Email</h3>
-                                <p><a href="mailto:impulsodigital411@gmail.com">impulsodigital411@gmail.com</a></p>
-                            </div>
-                        </div>
-                        <div class="contacto__item">
-                            <span class="contacto__item-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4A5.8 5.8 0 0122 7.8v8.4a5.8 5.8 0 01-5.8 5.8H7.8A5.8 5.8 0 012 16.2V7.8A5.8 5.8 0 017.8 2zm0 2A3.8 3.8 0 004 7.8v8.4A3.8 3.8 0 007.8 20h8.4a3.8 3.8 0 003.8-3.8V7.8A3.8 3.8 0 0016.2 4H7.8zm4.2 3.4a4.6 4.6 0 110 9.2 4.6 4.6 0 010-9.2zm0 2a2.6 2.6 0 100 5.2 2.6 2.6 0 000-5.2zM17 6.8a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2z" fill="currentColor"/></svg>
-                            </span>
-                            <div>
-                                <h3>Instagram</h3>
-                                <p><a href="https://www.instagram.com/impulso_sj/" target="_blank" rel="noopener noreferrer">@impulso_sj</a></p>
-                            </div>
-                        </div>
-
-                        <div class="contacto__quick-actions">
-                            <a href="https://wa.me/542646313348" class="contacto__quick-link" target="_blank" rel="noopener noreferrer">
-                                <span class="contacto__quick-link-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.74.46 3.44 1.32 4.94L2 22l5.3-1.39a9.9 9.9 0 004.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.51 2 12.04 2zm0 18.14h-.01a8.23 8.23 0 01-4.19-1.15l-.3-.18-3.14.82.84-3.06-.2-.31a8.2 8.2 0 01-1.26-4.35c0-4.55 3.71-8.25 8.27-8.25 2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 012.42 5.83c0 4.55-3.71 8.23-8.26 8.23zm4.53-6.16c-.25-.12-1.47-.72-1.7-.8-.23-.08-.39-.12-.56.12-.17.25-.64.8-.79.96-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.08s.89 2.41 1.02 2.58c.12.17 1.76 2.69 4.27 3.77.6.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.1-.23-.16-.48-.28z" fill="currentColor"/></svg>
-                                </span>
-                                <div>
-                                    <strong>WhatsApp 2646313348</strong>
-                                    <span>WhatsApp</span>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="contacto__social">
-                            <h3>Accesos rápidos</h3>
-                            <div class="contacto__social-icons">
-                                <a href="https://wa.me/542646313348" class="contacto__social-link contacto__social-link--whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp principal">
-                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.74.46 3.44 1.32 4.94L2 22l5.3-1.39a9.9 9.9 0 004.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.51 2 12.04 2zm0 18.14h-.01a8.23 8.23 0 01-4.19-1.15l-.3-.18-3.14.82.84-3.06-.2-.31a8.2 8.2 0 01-1.26-4.35c0-4.55 3.71-8.25 8.27-8.25 2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 012.42 5.83c0 4.55-3.71 8.23-8.26 8.23zm4.53-6.16c-.25-.12-1.47-.72-1.7-.8-.23-.08-.39-.12-.56.12-.17.25-.64.8-.79.96-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.08s.89 2.41 1.02 2.58c.12.17 1.76 2.69 4.27 3.77.6.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.1-.23-.16-.48-.28z" fill="currentColor"/></svg>
-                                </a>
-                                <a href="https://www.instagram.com/impulso_sj/" class="contacto__social-link contacto__social-link--instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Impulso">
-                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4A5.8 5.8 0 0122 7.8v8.4a5.8 5.8 0 01-5.8 5.8H7.8A5.8 5.8 0 012 16.2V7.8A5.8 5.8 0 017.8 2zm0 2A3.8 3.8 0 004 7.8v8.4A3.8 3.8 0 007.8 20h8.4a3.8 3.8 0 003.8-3.8V7.8A3.8 3.8 0 0016.2 4H7.8zm4.2 3.4a4.6 4.6 0 110 9.2 4.6 4.6 0 010-9.2zm0 2a2.6 2.6 0 100 5.2 2.6 2.6 0 000-5.2zM17 6.8a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2z" fill="currentColor"/></svg>
-                                </a>
-                                <a href="mailto:impulsodigital411@gmail.com" class="contacto__social-link contacto__social-link--email" aria-label="Email de Impulso">
-                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5h15A2.5 2.5 0 0122 7.5v9A2.5 2.5 0 0119.5 19h-15A2.5 2.5 0 012 16.5v-9A2.5 2.5 0 014.5 5zm0 2a.5.5 0 00-.5.5v.7l8 5.2 8-5.2v-.7a.5.5 0 00-.5-.5h-15zM20 10.6l-7.45 4.84a1 1 0 01-1.1 0L4 10.6v5.9a.5.5 0 00.5.5h15a.5.5 0 00.5-.5v-5.9z" fill="currentColor"/></svg>
-                                </a>
-                            </div>
-                        </div>
-                    </aside>
-                </div>
+            <a class="textlink" href="#contacto"
+              ><span data-i="cta">Hablemos de tu proyecto</span></a
+            >
+          </article>
+          <article class="service-card panel reveal">
+            <div>
+              <span class="tag">02</span>
+              <h3 data-i="s2">Web y comercio electrónico</h3>
+              <p data-i="s2more">
+                Sitios institucionales, catálogos digitales y experiencias de
+                compra claras en cualquier dispositivo.
+              </p>
             </div>
-        </section>
+            <a class="textlink" href="#catalogo"
+              ><span data-i="explore">Explorar soluciones</span></a
+            >
+          </article>
+          <article class="service-card panel reveal">
+            <div>
+              <span class="tag">03</span>
+              <h3 data-i="s3">Gestión y automatización</h3>
+              <p data-i="s3more">
+                Conectamos procesos, reducimos tareas repetitivas y organizamos
+                información para tomar mejores decisiones.
+              </p>
+            </div>
+            <a class="textlink" href="#contacto"
+              ><span data-i="contact">Contacto</span></a
+            >
+          </article>
+        </div>
+      </section>
+      <section class="section" id="catalogo" tabindex="-1">
+        <div class="split-head reveal">
+          <div>
+            <div class="kicker" data-i="solutions">Soluciones digitales</div>
+            <h2 data-i="catTitle">Una solución para cada negocio.</h2>
+          </div>
+          <p class="intro" data-i="catText">
+            Explorá los sistemas que podemos desarrollar y adaptar a tus
+            necesidades.
+          </p>
+        </div>
+        <div class="catalog-wrap">
+          <div class="catalog-list">
+            <a
+              class="catalog-item panel reveal"
+              data-project="c1"
+              href="#contacto"
+              ><span class="num">01</span>
+              <div>
+                <h3 data-i="c1">Comercios e inventario</h3>
+                <p data-i="c1d">
+                  Stock, compras, ventas, proveedores y reportes.
+                </p>
+              </div>
+              <span class="textlink" data-i="ask"
+                >Consultar esta solución</span
+              ></a
+            >
+            <a
+              class="catalog-item panel reveal"
+              data-project="c2"
+              href="#contacto"
+              ><span class="num">02</span>
+              <div>
+                <h3 data-i="c2">Gimnasios y centros deportivos</h3>
+                <p data-i="c2d">Planes, clases, horarios y consultas.</p>
+              </div>
+              <span class="textlink" data-i="ask"
+                >Consultar esta solución</span
+              ></a
+            >
+            <a
+              class="catalog-item panel reveal"
+              data-project="c3"
+              href="#contacto"
+              ><span class="num">03</span>
+              <div>
+                <h3 data-i="c3">Salud y turnos</h3>
+                <p data-i="c3d">Agenda, pacientes e historia clínica.</p>
+              </div>
+              <span class="textlink" data-i="ask"
+                >Consultar esta solución</span
+              ></a
+            >
+            <a
+              class="catalog-item panel reveal"
+              data-project="c4"
+              href="#contacto"
+              ><span class="num">04</span>
+              <div>
+                <h3 data-i="c4">Gastronomía y pedidos</h3>
+                <p data-i="c4d">
+                  Menú digital, pedidos, entregas y administración.
+                </p>
+              </div>
+              <span class="textlink" data-i="ask"
+                >Consultar esta solución</span
+              ></a
+            >
+            <a
+              class="catalog-item panel reveal"
+              data-project="c5"
+              href="#contacto"
+              ><span class="num">05</span>
+              <div>
+                <h3 data-i="c5">Inmobiliarias</h3>
+                <p data-i="c5d">
+                  Propiedades, contactos, visitas y oportunidades comerciales.
+                </p>
+              </div>
+              <span class="textlink" data-i="ask"
+                >Consultar esta solución</span
+              ></a
+            >
+          </div>
+        </div>
+      </section>
+      <section class="section" id="nosotros" tabindex="-1">
+        <div class="split-head reveal">
+          <div>
+            <div class="kicker" data-i="about">Nosotros</div>
+            <h2 data-i="aboutLead">
+              Tecnología pensada para personas y negocios reales.
+            </h2>
+          </div>
+          <p class="intro" data-i="aboutMore">
+            Impulso nace para acompañar a emprendedores, comercios,
+            profesionales, pymes, organizaciones y empresas de distintos tamaños
+            que buscan crecer y digitalizar sus procesos. Combinamos análisis,
+            diseño y desarrollo para transformar necesidades concretas en
+            herramientas útiles, seguras y adaptadas a cada negocio.
+          </p>
+        </div>
+        <div class="about-wrap">
+          <article class="about-card panel reveal">
+            <span class="quote-badge" data-i="aboutTitle">Somos Impulso.</span>
+            <p class="intro" data-i="aboutText">
+              Somos una agencia de software de San Juan, Argentina.
+              Desarrollamos soluciones a medida y trabajamos junto a vos para
+              que la tecnología simplifique tu día a día y acompañe el
+              crecimiento de tu negocio.
+            </p>
+          </article>
+          <article class="about-principles reveal">
+            <div class="kicker" data-i="why">Lo que nos mueve</div>
+            <div class="values">
+              <div class="value">
+                <h3 data-i="why1">Escuchar primero</h3>
+                <p data-i="why1d">
+                  Entendemos tu operación antes de proponer una solución.
+                </p>
+              </div>
+              <div class="value">
+                <h3 data-i="why2">Diseñar a medida</h3>
+                <p data-i="why2d">
+                  Cada proyecto responde a tus necesidades, no al revés.
+                </p>
+              </div>
+              <div class="value">
+                <h3 data-i="why3">Trabajar con claridad</h3>
+                <p data-i="why3d">
+                  Propuestas comprensibles, decisiones compartidas y
+                  acompañamiento durante el desarrollo.
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="section" id="metodologia" tabindex="-1">
+        <div class="split-head reveal">
+          <div>
+            <div class="kicker" data-i="process">Cómo trabajamos</div>
+            <h2 data-i="process">Cómo trabajamos</h2>
+          </div>
+          <p class="intro" data-i="processLead">
+            Te acompañamos de principio a fin. Buscamos que el desarrollo sea
+            ágil, claro y colaborativo, con comunicación cercana y avances que
+            puedas conocer durante todo el proyecto.
+          </p>
+        </div>
+        <div class="process-grid">
+          <article class="step panel reveal">
+            <strong>01</strong>
+            <h3 data-i="p1">Estamos cerca</h3>
+            <p data-i="p1d">
+              Escuchamos tus ideas y necesidades para encontrar una solución que
+              tenga sentido para tu negocio.
+            </p>
+          </article>
+          <article class="step panel reveal">
+            <strong>02</strong>
+            <h3 data-i="p2">Avanzamos juntos</h3>
+            <p data-i="p2d">
+              Acordamos prioridades y te mantenemos al tanto de los avances,
+              para que puedas participar en las decisiones.
+            </p>
+          </article>
+          <article class="step panel reveal">
+            <strong>03</strong>
+            <h3 data-i="p3">Hacemos que funcione</h3>
+            <p data-i="p3d">
+              Desarrollamos y probamos tu solución por etapas, buscando calidad
+              y agilidad.
+            </p>
+          </article>
+          <article class="step panel reveal">
+            <strong>04</strong>
+            <h3 data-i="p4">Seguimos acompañándote</h3>
+            <p data-i="p4d">
+              Te ayudamos con la puesta en marcha y el soporte que acordemos,
+              para que puedas aprovechar tu sistema.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="section" id="contacto" tabindex="-1">
+        <div class="split-head reveal">
+          <div>
+            <div class="kicker" data-i="contact">Contacto</div>
+            <h2 data-i="contactTitle">El próximo paso empieza acá.</h2>
+          </div>
+          <p class="intro" data-i="contactNote">
+            El formulario prepara un mensaje para que lo revises y envíes desde
+            WhatsApp.
+          </p>
+        </div>
+        <div class="contact-grid">
+          <aside class="contact-card panel reveal">
+            <div class="contact-links">
+              <a
+                href="https://wa.me/5492646313348"
+                rel="noopener noreferrer"
+                target="_blank"
+                ><span>WhatsApp</span><strong>264 631 3348</strong></a
+              >
+              <a href="mailto:impulsodigital411@gmail.com"
+                ><span data-i="email">Correo electrónico</span
+                ><strong>impulsodigital411@gmail.com</strong></a
+              >
+              <a
+                href="https://www.instagram.com/impulso_sj/"
+                rel="noopener noreferrer"
+                target="_blank"
+                ><span>Instagram</span><strong>@impulso_sj</strong></a
+              >
+              <div class="contact-location">
+                <span data-i="location">San Juan, Argentina</span
+                ><strong>Impulso</strong>
+              </div>
+            </div>
+          </aside>
+          <div class="contact-card panel">
+            <form
+              class="contact-form"
+              id="contactForm"
+              aria-describedby="formHint"
+              method="post"
+            >
+              <div class="fields">
+                <label
+                  ><span data-i="name">Nombre y apellido</span
+                  ><input
+                    autocomplete="name"
+                    id="nombre"
+                    name="nombre"
+                    required
+                    maxlength="120"
+                /></label>
+                <label>
+                  <span
+                    ><span data-i="company">Empresa o negocio</span>
+                    <small class="field-optional" data-i="optional"
+                      >(opcional)</small
+                    ></span
+                  >
+                  <input
+                    autocomplete="organization"
+                    id="empresa"
+                    name="empresa"
+                    maxlength="120"
+                  />
+                </label>
+                <label
+                  ><span data-i="email">Correo electrónico</span
+                  ><input
+                    autocomplete="email"
+                    id="email"
+                    name="email"
+                    type="email"
+                    maxlength="254"
+                /></label>
+                <label
+                  ><span data-i="phone">Teléfono</span
+                  ><input
+                    autocomplete="tel"
+                    id="telefono"
+                    name="telefono"
+                    type="tel"
+                    maxlength="32"
+                /></label>
+                <label class="full"
+                  ><span data-i="interest">Servicio de interés</span>
+                  <select id="servicio" name="servicio">
+                    <option data-i="choose" value="">
+                      Seleccioná una opción
+                    </option>
+                    <option data-i="optCustom" value="optCustom">
+                      Sistema a medida
+                    </option>
+                    <option data-i="optWeb" value="optWeb">
+                      Página web profesional
+                    </option>
+                    <option data-i="optShop" value="optShop">
+                      Catálogo o tienda online
+                    </option>
+                    <option data-i="optStock" value="optStock">
+                      Sistema de stock e inventario
+                    </option>
+                    <option data-i="optBooking" value="optBooking">
+                      Sistema de turnos o agenda
+                    </option>
+                    <option data-i="optOrders" value="optOrders">
+                      Sistema de pedidos
+                    </option>
+                    <option data-i="optGym" value="optGym">
+                      Gestión de gimnasios
+                    </option>
+                    <option data-i="optAutomation" value="optAutomation">
+                      Automatización de procesos
+                    </option>
+                    <option data-i="optRedesign" value="optRedesign">
+                      Mantenimiento o rediseño
+                    </option>
+                    <option data-i="other" value="other">Otro</option>
+                  </select>
+                </label>
+                <label class="full"
+                  ><span data-i="message">Descripción del proyecto</span
+                  ><textarea
+                    id="mensaje"
+                    name="mensaje"
+                    required
+                    maxlength="1500"
+                  ></textarea>
+                </label>
+              </div>
+              <p class="hint" id="formHint" data-i="hint">
+                Completá tu nombre y la descripción. Dejá un correo o teléfono
+                válido.
+              </p>
+              <div class="contact-fallback" id="contactFallback">
+                <p class="hint" data-i="contactFallbackNote">
+                  Si el formulario no puede preparar el mensaje, podés
+                  escribirnos directamente por WhatsApp.
+                </p>
+                <a
+                  class="button primary"
+                  href="https://wa.me/5492646313348"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><span data-i="waTitle">Contactanos por WhatsApp</span
+                  ><span aria-hidden="true">↗</span></a
+                >
+              </div>
+              <button class="button primary" type="submit" disabled hidden>
+                <span data-i="send">Enviar por WhatsApp</span
+                ><span aria-hidden="true">↗</span>
+              </button>
+              <p aria-live="polite" id="status"></p>
+              <a
+                class="textlink"
+                id="chatLink"
+                data-i="openChat"
+                rel="noopener noreferrer"
+                target="_blank"
+                hidden
+                >Abrir el mensaje en WhatsApp</a
+              >
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
-
     <footer class="footer">
-        <div class="container footer__grid">
-            <div class="footer__brand">
-                <img src="impulso_logo_assets/impulso_logo_horizontal_nav.png" alt="IMPULSO" class="footer__logo">
-            </div>
-            <span class="footer__divider" aria-hidden="true"></span>
-            <div class="footer__copy">
-                <p>Soluciones digitales que impulsan tu negocio.</p>
-                <p>&copy; 2024 Impulso. Todos los derechos reservados.</p>
-            </div>
+      <div class="footer-inner">
+        <div class="foot-col">
+          <a class="brand" href="#inicio">
+            <img
+              alt="Impulso"
+              width="2131"
+              height="707"
+              loading="lazy"
+              src="imagenes/logo/impulso-footer.png"
+            />
+          </a>
+          <p class="foot-descriptor" data-i="footer">
+            Agencia de software a medida.
+          </p>
+          <p data-i="homeNote">
+            Desde San Juan, Argentina. Trabajamos con personas y negocios que
+            quieren avanzar.
+          </p>
         </div>
+        <div class="foot-col">
+          <span class="foot-title" data-i="menu">Menú</span>
+          <a data-i="home" href="#inicio">Inicio</a>
+          <a data-i="services" href="#servicios">Servicios</a>
+          <a data-i="catalog" href="#catalogo">Catálogo</a>
+          <a data-i="about" href="#nosotros">Nosotros</a>
+          <a data-i="process" href="#metodologia">Cómo trabajamos</a
+          ><a data-i="contact" href="#contacto">Contacto</a>
+        </div>
+        <div class="foot-col">
+          <span class="foot-title" data-i="contact">Contacto</span>
+          <p data-i="location">San Juan, Argentina</p>
+          <a href="mailto:impulsodigital411@gmail.com"
+            >impulsodigital411@gmail.com</a
+          >
+          <a
+            href="https://wa.me/5492646313348"
+            rel="noopener noreferrer"
+            target="_blank"
+            >264 631 3348</a
+          >
+          <a
+            href="https://www.instagram.com/impulso_sj/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >@impulso_sj</a
+          >
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Impulso</span
+        ><span data-i="rights">Todos los derechos reservados.</span>
+      </div>
     </footer>
-
-    <div class="whatsapp-widget" id="whatsappWidget">
-        <div class="whatsapp-widget__panel" id="whatsappPanel" aria-hidden="true">
-            <p class="whatsapp-widget__title">Contactanos por WhatsApp</p>
-            <a href="https://wa.me/542646313348" target="_blank" rel="noopener noreferrer">
-                <strong>WhatsApp 2646313348</strong>
-                <span>Consulta directa</span>
-            </a>
-        </div>
-        <button class="whatsapp-widget__button" id="whatsappButton" type="button" aria-label="Abrir opciones de WhatsApp" aria-controls="whatsappPanel" aria-expanded="false">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.74.46 3.44 1.32 4.94L2 22l5.3-1.39a9.9 9.9 0 004.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.51 2 12.04 2zm0 18.14h-.01a8.23 8.23 0 01-4.19-1.15l-.3-.18-3.14.82.84-3.06-.2-.31a8.2 8.2 0 01-1.26-4.35c0-4.55 3.71-8.25 8.27-8.25 2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 012.42 5.83c0 4.55-3.71 8.23-8.26 8.23zm4.53-6.16c-.25-.12-1.47-.72-1.7-.8-.23-.08-.39-.12-.56.12-.17.25-.64.8-.79.96-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.08s.89 2.41 1.02 2.58c.12.17 1.76 2.69 4.27 3.77.6.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
-        </button>
-    </div>
-
-    <div class="lightbox" id="projectLightbox" aria-hidden="true" role="dialog" aria-label="Vista ampliada del proyecto">
-        <button class="lightbox__close" type="button" aria-label="Cerrar vista ampliada">Cerrar</button>
-        <figure class="lightbox__content">
-            <img src="" alt="" id="lightboxImage">
-            <figcaption id="lightboxTitle"></figcaption>
-        </figure>
-    </div>
-
-    <script src="script.js"></script>
-</body>
+    <a
+      aria-label="Contactar por WhatsApp"
+      data-i-label="waTitle"
+      class="whatsapp"
+      href="https://wa.me/5492646313348"
+      id="waButton"
+      rel="noopener noreferrer"
+      target="_blank"
+      title="Contactar por WhatsApp"
+      data-i-title="waTitle"
+    >
+      <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
+        <path
+          d="M20.2 3.8A11.4 11.4 0 0 0 2.7 17.5L1 23l5.6-1.6a11.3 11.3 0 0 0 5.4 1.4h.1A11.3 11.3 0 0 0 20.2 3.8Z"
+          stroke="#ece7df"
+          stroke-width="1.6"
+        ></path>
+        <path
+          d="M8.4 7.8c-.2-.5-.4-.5-.7-.5h-.6c-.2 0-.5 0-.8.3-.3.3-1 1-1 2.4s1 2.9 1.1 3.1c.2.2 2.1 3.4 5.3 4.6 2.7 1.1 3.2.9 3.8.8.6-.1 1.8-.8 2-1.6.3-.8.3-1.4.2-1.6-.1-.1-.4-.2-.9-.5s-1.8-.9-2.1-1-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1c-.4-.2-1.5-.5-2.8-1.7-1-1-1.7-2.1-1.9-2.4-.2-.4 0-.6.1-.8.1-.1.3-.3.4-.5.1-.2.2-.4.3-.6.1-.2 0-.4 0-.6s-.8-2-1-2.4Z"
+          fill="#ece7df"
+        ></path>
+      </svg>
+    </a>
+    <script type="module" src="script.js"></script>
+  </body>
 </html>
